@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowRight, BookOpen, ChevronDown, Clock3, Search, SlidersHorizontal, Target } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, ChevronDown, Clock3, Factory, Headphones, Search, ShoppingCart, SlidersHorizontal, Target, TriangleAlert, UserMinus, Users, Workflow } from "lucide-react";
 import { problemGuides, qualityTools, sectors, toolBySlug } from "@/lib/qualipedia-data";
 
 const normalize = (value: string) =>
@@ -25,6 +25,16 @@ const problemSearchText = (guide: (typeof problemGuides)[number]) =>
   normalize([guide.problem, guide.context, guide.outcome, ...guide.keywords].join(" "));
 
 const suggestions = ["problema de comunicação", "aumentar vendas", "perda de cliente", "medição e estatística", "risco em projetos"];
+
+const areas = [
+  { title: "Atendimento", description: "Suporte, experiência do cliente, comunicação e padronização.", query: "atendimento suporte experiência do cliente", sector: "Atendimento", icon: Headphones },
+  { title: "Vendas e e-commerce", description: "Conversão, prospecção, jornada de compra, entrega e devolução.", query: "vendas e-commerce conversão cliente", sector: "Todos", icon: ShoppingCart },
+  { title: "Projetos e processos", description: "Planejamento, implantação, fluxo, escopo e melhoria.", query: "projetos processos implantação melhoria", sector: "Projetos", icon: Workflow },
+  { title: "Gestão de pessoas", description: "Desempenho, treinamento, avaliação e ambiente de trabalho.", query: "pessoas treinamento avaliação desempenho", sector: "Pessoas", icon: Users },
+  { title: "Riscos e falhas", description: "Prevenção, não conformidades, causa raiz e controles.", query: "riscos falhas não conformidades causa raiz", sector: "Riscos", icon: TriangleAlert },
+  { title: "Perda de clientes", description: "Churn, cancelamento, retenção, satisfação e recompra.", query: "perda de cliente churn retenção cancelamento", sector: "Todos", icon: UserMinus },
+  { title: "Indústria e operações", description: "Variação, desperdício, produtividade e estabilidade.", query: "indústria operações produtividade desperdício", sector: "Operações", icon: Factory },
+] as const;
 
 export function LibraryExplorer() {
   const [query, setQuery] = useState("");
@@ -65,21 +75,37 @@ export function LibraryExplorer() {
     document.getElementById("biblioteca")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function chooseArea(area: (typeof areas)[number]) {
+    setQuery(area.query);
+    setSector(area.sector);
+    setVisible(9);
+    window.setTimeout(() => document.getElementById("enciclopedia")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+  }
+
   return (
     <>
-      <section id="biblioteca" className="scroll-mt-28 border-b border-[#DFE3E8] bg-white">
+      <section id="inicio" className="scroll-mt-28 border-b border-[#DFE3E8] bg-white">
         <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
-          <div className="max-w-3xl">
-            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.14em] text-[#1D5FD1]">Biblioteca aplicada</p>
-            <h1 className="max-w-2xl text-3xl font-extrabold tracking-[-0.035em] text-[#172033] sm:text-4xl">
-              Comece pelo problema. Encontre um caminho para melhorar.
-            </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[#647083]">
-              Pesquise uma situação real, uma área, um indicador ou uma ferramenta. A QualiPédia relaciona o problema a métodos que ajudam a medir, analisar, priorizar e agir.
-            </p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
+            <div className="max-w-3xl">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-[5px] border border-[#DCE1E8] bg-[#F8F9FB] px-3 py-1.5 text-xs font-bold text-[#647083]"><BookOpen size={14} /> Base de conhecimento em gestão da qualidade</div>
+              <h1 className="max-w-3xl text-4xl font-extrabold tracking-[-0.045em] text-[#172033] sm:text-5xl">QualiPédia</h1>
+              <p className="mt-3 text-xl font-bold leading-8 text-[#263248]">Sua enciclopédia de gestão da qualidade</p>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-[#647083]">
+                Um ambiente de consulta para compreender conceitos, escolher ferramentas e aplicar qualidade em diferentes setores, processos e situações de trabalho.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#D9E2F2] pl-5">
+              <p className="text-xs font-extrabold uppercase tracking-[0.1em] text-[#1D5FD1]">Para que serve</p>
+              <ul className="mt-3 space-y-2.5">
+                <li className="flex gap-2 text-sm leading-5 text-[#536071]"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#2563EB]" />Encontrar a ferramenta adequada para uma situação.</li>
+                <li className="flex gap-2 text-sm leading-5 text-[#536071]"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#2563EB]" />Entender quando, por que e como aplicar cada método.</li>
+                <li className="flex gap-2 text-sm leading-5 text-[#536071]"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#2563EB]" />Explorar qualidade em atendimento, vendas, projetos e operações.</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="mt-8 max-w-4xl">
+          <div className="mt-9 max-w-5xl">
             <label htmlFor="quality-search" className="sr-only">Pesquisar problema, área ou ferramenta</label>
             <div className="flex min-h-14 items-center rounded-[6px] border border-[#BAC3D1] bg-white shadow-[0_5px_16px_rgba(31,45,68,0.08)] focus-within:border-[#2563EB] focus-within:ring-3 focus-within:ring-[#2563EB]/10">
               <Search className="ml-4 shrink-0 text-[#647083]" size={21} />
@@ -87,7 +113,7 @@ export function LibraryExplorer() {
                 id="quality-search"
                 value={query}
                 onChange={(event) => { setQuery(event.target.value); setVisible(9); }}
-                placeholder="Ex.: problema de comunicação, queda nas vendas, perda de cliente..."
+                placeholder="Descreva sua situação ou problema..."
                 className="min-w-0 flex-1 bg-transparent px-3 py-4 text-base text-[#172033] outline-none placeholder:text-[#98A1AF]"
               />
               {query ? (
@@ -103,6 +129,27 @@ export function LibraryExplorer() {
               ))}
             </div>
           </div>
+
+          <section className="mt-10" aria-labelledby="areas-title">
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div>
+                <h2 id="areas-title" className="text-xl font-extrabold tracking-[-0.02em]">Explorar por área de atuação</h2>
+                <p className="mt-1 text-sm text-[#7B8495]">Escolha um contexto para encontrar ferramentas e situações relacionadas.</p>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {areas.map((area) => {
+                const Icon = area.icon;
+                return (
+                  <button key={area.title} type="button" onClick={() => chooseArea(area)} className="group min-h-40 rounded-[6px] border border-[#DFE3E8] bg-white p-5 text-left transition hover:border-[#AFC5EB] hover:bg-[#F8FAFF] hover:shadow-[0_5px_18px_rgba(31,45,68,0.07)]">
+                    <span className="grid size-10 place-items-center rounded-[5px] border border-[#DCE1E8] bg-[#F7F8FA] text-[#263248] group-hover:border-[#C9D8F2] group-hover:bg-[#EAF1FF] group-hover:text-[#1D5FD1]"><Icon size={20} /></span>
+                    <span className="mt-4 block text-base font-extrabold text-[#263248]">{area.title}</span>
+                    <span className="mt-1 block text-sm leading-5 text-[#7B8495]">{area.description}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
         </div>
       </section>
 
@@ -134,12 +181,12 @@ export function LibraryExplorer() {
           </section>
         ) : null}
 
-        <section aria-labelledby="tools-title">
+        <section id="enciclopedia" className="scroll-mt-28" aria-labelledby="tools-title">
           <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#7B8495]">Ferramentas e métodos</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#7B8495]">Enciclopédia</p>
               <h2 id="tools-title" className="mt-1 text-2xl font-extrabold tracking-[-0.025em]">
-                {query ? `Resultados para “${query}”` : "Biblioteca de qualidade"}
+                {query ? "Ferramentas relacionadas à sua busca" : "Ferramentas e métodos de qualidade"}
               </h2>
               <p className="mt-1 text-sm text-[#7B8495]">{filteredTools.length} {filteredTools.length === 1 ? "resultado" : "resultados"}</p>
             </div>
