@@ -8,15 +8,45 @@ Biblioteca digital de gestão da qualidade criada por Bruna Silva Ramos. O proje
 
 A publicação inicial está privada para revisão da proprietária.
 
+> Existe também a versão oficial em aplicativo (Base44), com login próprio, busca com IA, trilhas por área de negócio, acervo protegido e painel de usuários e permissões.
+
+## Estrutura do repositório
+
+```
+qualipedia/
+├── app/                        # Páginas do site (Next.js)
+│   ├── page.tsx                # Home: biblioteca com busca aplicada
+│   └── metodologias/page.tsx   # Área privada (exige autenticação + OWNER_EMAIL)
+├── components/                 # Interface (explorador, shell, filtros)
+├── lib/qualipedia-data.ts      # TODO o conteúdo: 59 ferramentas + 22 situações-guia
+├── site-estatico/              # Versão offline portátil (abre sem instalar nada)
+│   └── index.html              # Dê dois cliques para abrir no navegador
+├── documentos/                 # Documentos do projeto (portfólio)
+│   ├── Documentacao-Completa-QualiPedia.docx
+│   ├── Documento-Instrucao-QualiPedia.docx
+│   └── Apresentacao-QualiPedia.pptx
+├── scripts/                    # Scripts de build e instalação
+└── vendor/, build/             # Dependências de estilo e build
+```
+
 ## Funcionalidades
 
 - busca por problema, objetivo, setor ou nome da ferramenta;
 - recomendações para atendimento, vendas, e-commerce, projetos, riscos, pessoas e operações;
-- fichas com conceito, origem, finalidade e situações de aplicação;
+- fichas com conceito, origem (quem criou, quando e por quê), finalidade e situações de aplicação;
 - filtros por área;
-- guia de decisão com caminhos iniciais para problemas comuns;
+- guia de decisão com 22 caminhos iniciais para problemas comuns;
 - rota protegida para metodologias próprias;
 - layout responsivo seguindo a identidade visual definida para o projeto.
+
+## Conteúdo
+
+As ferramentas e os guias de decisão ficam em `lib/qualipedia-data.ts`:
+
+- **59 ferramentas e conceitos**, incluindo: as 7 ferramentas clássicas (fluxograma, Ishikawa, folha de verificação, Pareto, histograma, carta de controle, dispersão), ferramentas complementares (SIPOC, Kanban, 5S, matriz de risco, PFMEA, 5 Porquês, 5W2H, MASP, DMAIC, PDCA, Kaizen e Kaizen A3, matriz GUT, BSC, QFD, 8D, MSA/R&R, Poka-Yoke, BPMN, VSM, Gemba walk, SWOT, brainstorming, FMEA) e a série **Fundamentos e História** (Deming, Juran, Crosby, Ishikawa, Feigenbaum, Taguchi, gestão da qualidade, implantação passo a passo, excelência organizacional, enfoque sistêmico, eficiência × eficácia, TQM, sustentabilidade, ciclo de vida do produto, ISO 9001, auditoria interna, gestão de não conformidades, gestão de riscos ISO 31000, gestão do conhecimento, automação de processos, gestão de projetos, Lean, Six Sigma).
+- **22 situações-guia** com contexto, resultado esperado e ferramentas indicadas.
+
+Cada ferramenta possui categoria, resumo, contexto histórico, finalidade, situações de aplicação, setores e palavras relacionadas. As palavras relacionadas permitem que uma busca como `problema de comunicação`, `perda de cliente` ou `medição e estatística` encontre caminhos úteis mesmo sem o usuário conhecer o nome técnico da ferramenta.
 
 ## Limite entre conteúdo público e privado
 
@@ -33,6 +63,10 @@ Não devem ser adicionados ao código público:
 - resultados operacionais não anonimizados.
 
 A rota `/metodologias` exige autenticação e autorização no servidor. O acesso da proprietária é controlado pela variável `OWNER_EMAIL`.
+
+## Versão offline (site-estatico/)
+
+Para usar sem instalar nada: abra `site-estatico/index.html` no navegador. A busca, o guia e as fichas funcionam localmente. Todo o conteúdo dessa versão fica em `site-estatico/qualipedia/data.js`. Serve também para publicação em hospedagem simples (opção "implantar como estático").
 
 ## Tecnologias
 
@@ -69,19 +103,9 @@ OWNER_EMAIL=seu-email-da-conta@example.com
 
 Na hospedagem, configure essa variável como segredo do ambiente. Não grave o e-mail real ou outras credenciais no repositório.
 
-## Conteúdo
-
-As ferramentas e os guias de decisão ficam em:
-
-```text
-lib/qualipedia-data.ts
-```
-
-Cada ferramenta possui categoria, resumo, contexto histórico, finalidade, situações de aplicação, setores e palavras relacionadas. As palavras relacionadas permitem que uma busca como `problema de comunicação`, `perda de cliente` ou `medição e estatística` encontre caminhos úteis mesmo sem o usuário conhecer o nome técnico da ferramenta.
-
 ## Hospedagem
 
-Esta versão usa autenticação fornecida pelo Sites. Para implantar a rota privada em outro provedor, como a Hostinger, será necessário substituir essa integração por autenticação e autorização compatíveis com o servidor escolhido.
+Esta versão usa autenticação fornecida pelo Sites. Para implantar a rota privada em outro provedor, como a Hostinger, será necessário substituir essa integração por autenticação e autorização compatíveis com o servidor escolhido. A versão em `site-estatico/` pode ser implantada como site estático em qualquer provedor.
 
 ## Segurança
 
