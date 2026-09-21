@@ -1,18 +1,19 @@
 import Link from "next/link";
-import { BookOpen, Compass, LockKeyhole, Search, ShieldCheck } from "lucide-react";
+import { BookOpen, Compass, Home, LockKeyhole, Search, ShieldCheck } from "lucide-react";
 
 type SiteShellProps = {
   children: React.ReactNode;
-  active?: "biblioteca" | "guia" | "metodologias";
+  active?: "inicio" | "enciclopedia" | "guia" | "metodologias";
 };
 
 const navigation = [
-  { label: "Biblioteca", href: "/#biblioteca", icon: BookOpen, key: "biblioteca" },
+  { label: "Início", href: "/#inicio", icon: Home, key: "inicio" },
   { label: "Qual ferramenta usar", href: "/#guia", icon: Compass, key: "guia" },
+  { label: "Enciclopédia", href: "/#enciclopedia", icon: BookOpen, key: "enciclopedia" },
   { label: "Metodologias", href: "/metodologias", icon: LockKeyhole, key: "metodologias" },
 ] as const;
 
-export function SiteShell({ children, active = "biblioteca" }: SiteShellProps) {
+export function SiteShell({ children, active = "inicio" }: SiteShellProps) {
   return (
     <div className="min-h-screen bg-[#F4F6F8] text-[#172033]">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-[#DFE3E8] bg-white lg:flex lg:flex-col">
@@ -25,7 +26,7 @@ export function SiteShell({ children, active = "biblioteca" }: SiteShellProps) {
         </Link>
 
         <nav className="flex-1 px-3 py-6" aria-label="Navegação principal">
-          <p className="px-3 pb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#929AA8]">Conhecimento</p>
+          <p className="px-3 pb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#929AA8]">Gestão da qualidade</p>
           <div className="space-y-1">
             {navigation.map(({ label, href, icon: Icon, key }) => (
               <Link
@@ -63,7 +64,7 @@ export function SiteShell({ children, active = "biblioteca" }: SiteShellProps) {
             </Link>
             <div className="hidden items-center gap-2 text-sm text-[#7B8495] lg:flex">
               <Search size={16} />
-              <span>Conhecimento aplicado à decisão</span>
+              <span>Base de conhecimento em gestão da qualidade</span>
             </div>
             <Link href="/metodologias" className="inline-flex items-center gap-2 rounded-[5px] border border-[#D8DDE5] bg-white px-3 py-2 text-sm font-semibold text-[#435067] hover:border-[#B8C2D1] hover:text-[#1D5FD1]">
               <LockKeyhole size={15} />
@@ -80,7 +81,7 @@ export function SiteShell({ children, active = "biblioteca" }: SiteShellProps) {
         </header>
         {children}
         <footer className="border-t border-[#DFE3E8] bg-white px-5 py-8 text-center text-sm text-[#7B8495]">
-          QualiPédia · conteúdo público educativo e acervo metodológico protegido
+          QualiPédia · enciclopédia de gestão da qualidade
         </footer>
       </div>
     </div>
