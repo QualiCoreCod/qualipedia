@@ -1,49 +1,88 @@
-# QualiPédia — Repositório completo
+# QualiPédia
 
-**Enciclopédia pessoal da qualidade** — projeto da Bruna Silva Ramos Sousa.
-A "cola" de consulta rápida: o que sei, o que construí e qual ferramenta usar
-em cada situação, para aplicar qualidade em qualquer empresa, setor ou
-momento da carreira.
+Biblioteca digital de gestão da qualidade criada por Bruna Silva Ramos. O projeto ajuda profissionais de qualquer área a partir de um problema real e encontrar ferramentas para medir, analisar, priorizar e melhorar processos.
 
-## O que tem aqui
+## Versão publicada
 
+[qualipedia-bruna.comprasbru1807.chatgpt.site](https://qualipedia-bruna.comprasbru1807.chatgpt.site)
+
+A publicação inicial está privada para revisão da proprietária.
+
+## Funcionalidades
+
+- busca por problema, objetivo, setor ou nome da ferramenta;
+- recomendações para atendimento, vendas, e-commerce, projetos, riscos, pessoas e operações;
+- fichas com conceito, origem, finalidade e situações de aplicação;
+- filtros por área;
+- guia de decisão com caminhos iniciais para problemas comuns;
+- rota protegida para metodologias próprias;
+- layout responsivo seguindo a identidade visual definida para o projeto.
+
+## Limite entre conteúdo público e privado
+
+O repositório contém somente conhecimento público e a estrutura geral das metodologias.
+
+Não devem ser adicionados ao código público:
+
+- critérios internos de avaliação;
+- pesos e fórmulas;
+- prompts proprietários;
+- planilhas e documentos empresariais;
+- nomes de clientes ou colaboradores;
+- dados individuais de atendimento;
+- resultados operacionais não anonimizados.
+
+A rota `/metodologias` exige autenticação e autorização no servidor. O acesso da proprietária é controlado pela variável `OWNER_EMAIL`.
+
+## Tecnologias
+
+- React 19;
+- TypeScript;
+- Next.js com Vinext;
+- Tailwind CSS;
+- Lucide React;
+- Cloudflare Workers por meio do Sites.
+
+## Executar localmente
+
+Requisitos: Node.js 22.13 ou superior e pnpm.
+
+```bash
+pnpm install
+pnpm dev
 ```
-qualipedia-completo/
-├── README.md                          # este arquivo
-├── site/                              # SITE ESTÁTICO (abre sem instalar nada)
-│   ├── index.html                     # abra este arquivo no navegador
-│   ├── qualipedia/data.js             # TODO o conteúdo do site (edite aqui)
-│   ├── css/styles.css
-│   ├── js/app.js
-│   └── README.md                      # instruções de edição e publicação
-└── documentos/
-    ├── Documento-Instrucao-QualiPedia.docx   # manual: criar do zero, arquitetura,
-    │                                          # pesquisa, ferramentas, como alimentar
-    └── Apresentacao-QualiPedia.pptx          # apresentação do projeto (portfólio)
+
+Para validar a versão de produção:
+
+```bash
+pnpm lint
+pnpm build
 ```
 
-## Como usar o site agora (30 segundos)
+## Configuração da área privada
 
-1. Descompacte este ZIP.
-2. Abra a pasta `site` e dê dois cliques em `index.html`.
-3. Pronto — busca, guia "qual ferramenta usar?", 27 fichas da enciclopédia
-   e o acervo pessoal, tudo funcionando no navegador.
+Copie `.env.example` para `.env.local` e informe o e-mail autorizado:
 
-## Como adicionar conteúdo
+```env
+OWNER_EMAIL=seu-email-da-conta@example.com
+```
 
-Todo o conteúdo fica em `site/qualipedia/data.js`, em formato simples de ler:
-copie uma ficha existente, troque o texto e salve — a busca do site pega
-automaticamente. O manual completo está em `documentos/`.
+Na hospedagem, configure essa variável como segredo do ambiente. Não grave o e-mail real ou outras credenciais no repositório.
 
-## Versões do projeto
+## Conteúdo
 
-- **Este repositório:** versão portátil do site (arquivos que rodam em qualquer lugar).
-- **App no Base44 (app.base44.com):** versão online privada, com login, banco de
-  dados e formulário de novos temas — é a versão oficial, acessível de qualquer
-  dispositivo. As duas têm o mesmo conteúdo e o mesmo padrão de fichas.
+As ferramentas e os guias de decisão ficam em:
 
-## Aviso de privacidade
+```text
+lib/qualipedia-data.ts
+```
 
-O conteúdo inclui dados reais da sua metodologia e resultados profissionais.
-Se for publicar em qualquer lugar público (GitHub etc.), prefira repositório
-privado ou revise antes o que deseja expor.
+Cada ferramenta possui categoria, resumo, contexto histórico, finalidade, situações de aplicação, setores e palavras relacionadas. As palavras relacionadas permitem que uma busca como `problema de comunicação`, `perda de cliente` ou `medição e estatística` encontre caminhos úteis mesmo sem o usuário conhecer o nome técnico da ferramenta.
+
+## Hospedagem
+
+Esta versão usa autenticação fornecida pelo Sites. Para implantar a rota privada em outro provedor, como a Hostinger, será necessário substituir essa integração por autenticação e autorização compatíveis com o servidor escolhido.
+
+## Segurança
+
+Consulte [SECURITY.md](SECURITY.md) antes de adicionar documentos ou dados profissionais.
