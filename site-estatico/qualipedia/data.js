@@ -350,6 +350,123 @@ const QUALIPEDIA = {
    ],
    "exemplos": "Planejamento estratégico de áreas e carreiras.",
    "onde": ""
+  },
+  {
+   "titulo": "Gerenciamento pelas Diretrizes (GPD / Hoshin Kanri)",
+   "categoria": "Estratégia",
+   "conceito": "Metodologia japonesa que desdobra metas estratégicas da alta administração em planos operacionais para todos os níveis, em 5 etapas: diretrizes corporativas, desdobramento em metas, planos de ação, execução com acompanhamento e avaliação de resultados.",
+   "como": [
+    "Definir as diretrizes corporativas do ano",
+    "Desdobrar em metas por área com o método catchball",
+    "Elaborar planos de ação com responsáveis e prazos",
+    "Acompanhar periodicamente e avaliar resultados"
+   ],
+   "exemplos": "Alinhamento entre estratégia e operação em empresas de qualquer porte.",
+   "onde": "Pode desdobrar as metas de qualidade da diretoria em planos de ação por equipe."
+  },
+  {
+   "titulo": "Matriz X (Hoshin Kanri X-Matrix)",
+   "categoria": "Estratégia",
+   "conceito": "Ferramenta visual que conecta em uma única página diretrizes estratégicas, metas anuais, processos de melhoria, projetos e responsáveis.",
+   "como": [
+    "Listar diretrizes de longo prazo",
+    "Definir metas anuais correspondentes",
+    "Relacionar processos de melhoria e projetos",
+    "Marcar as correlações entre os quadrantes"
+   ],
+   "exemplos": "Painel de alinhamento estratégico em reuniões de diretoria.",
+   "onde": "Pode estruturar o alinhamento visual entre metas de qualidade e projetos da operação."
+  },
+  {
+   "titulo": "Benchmarking",
+   "categoria": "Melhoria contínua",
+   "conceito": "Comparação sistemática de processos e desempenho com referências internas ou externas para adaptar as melhores práticas. 5 tipos: interno, competitivo, funcional, genérico e colaborativo.",
+   "como": [
+    "Planejar o objeto do benchmarking e as referências",
+    "Coletar dados das melhores práticas",
+    "Analisar as lacunas de desempenho",
+    "Adaptar e implementar, monitorando os resultados"
+   ],
+   "exemplos": "Elevar o padrão de atendimento comparando com líderes do setor.",
+   "onde": "Pode comparar critérios de avaliação e indicadores com referências do mercado."
+  },
+  {
+   "titulo": "OEE — Eficiência Global dos Equipamentos",
+   "categoria": "Medição",
+   "conceito": "Indicador que multiplica Disponibilidade × Performance × Qualidade para medir a eficiência real de equipamentos e linhas. Criado por Seiichi Nakajima (JIPM, anos 1970) como base da TPM.",
+   "como": [
+    "Medir a disponibilidade (tempo produtivo / planejado)",
+    "Medir a performance (velocidade real / teórica)",
+    "Medir a qualidade (peças boas / total)",
+    "Multiplicar os três fatores e atacar as seis grandes perdas"
+   ],
+   "exemplos": "Diagnóstico de gargalos em linhas de produção.",
+   "onde": "Pode medir a eficiência global de qualquer operação com fluxo e capacidade limitada."
+  },
+  {
+   "titulo": "Performance Prism (Prisma de Desempenho)",
+   "categoria": "Estratégia",
+   "conceito": "Modelo de medição de desempenho em 5 facetas: satisfação dos stakeholders, estratégias, processos, capacidades e contribuição dos stakeholders. Criado por Andy Neely e outros (Cranfield, início dos anos 2000).",
+   "como": [
+    "Mapear os stakeholders e suas necessidades",
+    "Definir estratégias para atendê-las",
+    "Desenhar os processos e capacidades necessários",
+    "Medir a contribuição de cada parte interessada"
+   ],
+   "exemplos": "Sistemas de indicadores que equilibraram todos os públicos de interesse.",
+   "onde": "Pode ampliar o desenho de indicadores além do cliente, incluindo equipe e fornecedores."
+  },
+  {
+   "titulo": "Modelo de Excelência da Gestão (MEG/FNQ)",
+   "categoria": "Estratégia",
+   "conceito": "Estrutura sistêmica da Fundação Nacional da Qualidade (FNQ, Brasil, 1991) que orienta o diagnóstico da maturidade da gestão com critérios como Governança, Estratégias, Clientes, Sociedade, Processos, Pessoas e Resultados.",
+   "como": [
+    "Realizar o autodiagnóstico pelos critérios do modelo",
+    "Identificar as lacunas de maturidade",
+    "Priorizar planos de evolução da gestão",
+    "Reavaliar periodicamente a evolução"
+   ],
+   "exemplos": "Preparação de empresas para o Prêmio Nacional da Qualidade (PNQ).",
+   "onde": "Pode estruturar o autodiagnóstico da área de qualidade e sua evolução."
+  },
+  {
+   "titulo": "Produtividade x Eficiência",
+   "categoria": "Medição",
+   "conceito": "Produtividade = saídas / entradas (volume gerado por recurso). Eficiência = resultado real / resultado ideal (rendimento frente a um padrão). Produzir mais não significa operar sem desperdício.",
+   "como": [
+    "Calcular a produtividade da operação",
+    "Definir o padrão ideal (tempo, custo, volume)",
+    "Calcular a eficiência frente ao padrão",
+    "Investigar a diferença entre os dois antes de decidir"
+   ],
+   "exemplos": "Equipe com 10 atendimentos/hora, mas eficiência de 80% frente ao padrão.",
+   "onde": "Pode separar volume produzido de aproveitamento real do tempo padrão nos ciclos avaliativos."
+  },
+  {
+   "titulo": "Estratégia de Manufatura",
+   "categoria": "Estratégia",
+   "conceito": "Alinhamento dos recursos de produção aos objetivos competitivos (custo, qualidade, flexibilidade, entrega, inovação), com decisões estruturais (capacidade, instalações, tecnologia) e infraestruturais (PCP, qualidade, pessoas). Formulada por Wickham Skinner (1969).",
+   "como": [
+    "Definir os critérios competitivos prioritários",
+    "Decidir trade-offs (não se compete em tudo ao mesmo tempo)",
+    "Alinhar capacidade e tecnologia à estratégia",
+    "Alinhar as decisões infraestruturais de apoio"
+   ],
+   "exemplos": "Fábrica que escolhe flexibilidade e entrega rápida em vez de custo mínimo.",
+   "onde": "Pode orientar onde concentrar investimentos de capacidade da operação."
+  },
+  {
+   "titulo": "Taylorismo e Fordismo",
+   "categoria": "Fundamentos",
+   "conceito": "Bases históricas da produção: Taylorismo (Frederick Taylor, 1911) com estudo de tempos e movimentos e padronização; Fordismo (Henry Ford, 1908-1913) com linha de montagem móvel e produção em massa.",
+   "como": [
+    "Compreender a origem da padronização de métodos",
+    "Analisar a divisão entre planejamento e execução",
+    "Identificar a rigidez da produção em massa",
+    "Conectar com a evolução posterior para o Lean"
+   ],
+   "exemplos": "Estudo histórico da evolução dos sistemas de produção.",
+   "onde": "Fundamento para explicar de onde vêm a padronização e os padrões de tempo usados hoje."
   }
  ],
  "guia": [
