@@ -39,12 +39,18 @@ qualipedia/
 - rota protegida para metodologias próprias;
 - layout responsivo seguindo a identidade visual definida para o projeto.
 
+## Documentação técnica
+
+- [`docs/arquitetura-e-telas.md`](docs/arquitetura-e-telas.md) — todas as telas, design system (paleta, tipografia, diagramas técnicos), tecnologias de cada camada e o que existe por trás de cada tela.
+- [`docs/iso-9001.md`](docs/iso-9001.md) — conteúdo oficial verificado da ISO 9001:2015 (10 cláusulas, PDCA, pensamento baseado em risco, certificação no Brasil via Inmetro) com links brasileiros (ABNT, Inmetro, FNQ).
+- `documentos/TCC-QualiPedia.docx` — Trabalho de Conclusão de Curso do projeto (formato ABNT).
+
 ## Conteúdo
 
 As ferramentas e os guias de decisão ficam em `lib/qualipedia-data.ts`:
 
-- **59 ferramentas e conceitos**, incluindo: as 7 ferramentas clássicas (fluxograma, Ishikawa, folha de verificação, Pareto, histograma, carta de controle, dispersão), ferramentas complementares (SIPOC, Kanban, 5S, matriz de risco, PFMEA, 5 Porquês, 5W2H, MASP, DMAIC, PDCA, Kaizen e Kaizen A3, matriz GUT, BSC, QFD, 8D, MSA/R&R, Poka-Yoke, BPMN, VSM, Gemba walk, SWOT, brainstorming, FMEA) e a série **Fundamentos e História** (Deming, Juran, Crosby, Ishikawa, Feigenbaum, Taguchi, gestão da qualidade, implantação passo a passo, excelência organizacional, enfoque sistêmico, eficiência × eficácia, TQM, sustentabilidade, ciclo de vida do produto, ISO 9001, auditoria interna, gestão de não conformidades, gestão de riscos ISO 31000, gestão do conhecimento, automação de processos, gestão de projetos, Lean, Six Sigma).
-- **22 situações-guia** com contexto, resultado esperado e ferramentas indicadas.
+- **68 ferramentas e conceitos**, incluindo: as 7 ferramentas clássicas (fluxograma, Ishikawa, folha de verificação, Pareto, histograma, carta de controle, dispersão), ferramentas complementares (SIPOC, Kanban, 5S, matriz de risco, PFMEA, 5 Porquês, 5W2H, MASP, DMAIC, PDCA, Kaizen e Kaizen A3, matriz GUT, BSC, QFD, 8D, MSA/R&R, Poka-Yoke, BPMN, VSM, Gemba walk, SWOT, brainstorming, FMEA) e a série **Fundamentos e História** (Deming, Juran, Crosby, Ishikawa, Feigenbaum, Taguchi, gestão da qualidade, implantação passo a passo, excelência organizacional, enfoque sistêmico, eficiência × eficácia, TQM, sustentabilidade, ciclo de vida do produto, ISO 9001, auditoria interna, gestão de não conformidades, gestão de riscos ISO 31000, gestão do conhecimento, automação de processos, gestão de projetos, Lean, Six Sigma, Gerenciamento pelas Diretrizes (GPD/Hoshin Kanri), Matriz X, benchmarking, OEE, Performance Prism, MEG/FNQ, produtividade x eficiência, estratégia de manufatura e Taylorismo/Fordismo).
+- **25 situações-guia** com contexto, resultado esperado e ferramentas indicadas.
 
 Cada ferramenta possui categoria, resumo, contexto histórico, finalidade, situações de aplicação, setores e palavras relacionadas. As palavras relacionadas permitem que uma busca como `problema de comunicação`, `perda de cliente` ou `medição e estatística` encontre caminhos úteis mesmo sem o usuário conhecer o nome técnico da ferramenta.
 
@@ -66,7 +72,7 @@ A rota `/metodologias` exige autenticação e autorização no servidor. O acess
 
 ## Versão offline (site-estatico/)
 
-Para usar sem instalar nada: abra `site-estatico/index.html` no navegador. A busca, o guia e as fichas funcionam localmente. Todo o conteúdo dessa versão fica em `site-estatico/qualipedia/data.js`. Serve também para publicação em hospedagem simples (opção "implantar como estático").
+Para usar sem instalar nada: abra `site-estatico/index.html` no navegador. A busca, o guia e as fichas funcionam localmente. Todo o conteúdo dessa versão (36 fichas da enciclopédia, guia de decisão e acervo público) fica em `site-estatico/qualipedia/data.js`. Serve também para publicação em hospedagem simples (opção "implantar como estático").
 
 ## Tecnologias
 
