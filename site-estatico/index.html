@@ -3,53 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QualiPédia — Enciclopédia Pessoal da Qualidade</title>
+<title>QualiPédia — Sua enciclopédia de Gestão da Qualidade</title>
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body id="inicio">
+
 <header class="site-header">
-  <div class="wrap">
-    <div class="logo">QualiPédia <span>· enciclopédia pessoal da qualidade</span></div>
-    <nav>
-      <a href="#busca" class="nav-a">Buscar</a>
-      <a href="#guia" class="nav-a">Qual ferramenta usar?</a>
-      <a href="#enciclopedia" class="nav-a">Enciclopédia</a>
-      <a href="#acervo" class="nav-a">Acervo</a>
+  <div class="wrap header-inner">
+    <a href="#inicio" class="brand">
+      <span class="monogram" aria-hidden="true">Q</span>
+      <span class="brand-text">
+        <span class="brand-name">QualiPédia</span>
+        <span class="brand-author">Bruna Silva Ramos</span>
+      </span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Abrir menu">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <nav class="main-nav">
+      <a href="#inicio">Início</a>
+      <a href="#guia">Qual ferramenta usar?</a>
+      <a href="#enciclopedia">Enciclopédia</a>
+      <a href="#busca" class="nav-search" data-term="ISO 9001">ISO 9001</a>
+      <a href="#busca" class="nav-search" data-term="metodologia">Metodologias</a>
+      <a href="#acervo">Acervo</a>
+      <a href="https://app.base44.com/apps/6aae986d830b0be6e6f3384c" target="_blank" rel="noopener" class="nav-privada">Área privada</a>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
+<section class="hero">
+  <div class="wm-layer" aria-hidden="true">
+    <!-- Fluxograma -->
+    <svg class="wm wm-1" viewBox="0 0 64 40"><rect x="2" y="14" width="14" height="12" rx="1"/><path d="M16 20h10M26 20l-4-4m4 4l-4 4"/><rect x="26" y="6" width="14" height="10" rx="5"/><path d="M40 11h10M50 11l-4-4m4 4l-4 4"/><rect x="40" y="26" width="14" height="10" rx="1"/><path d="M26 20v16h14"/></svg>
+    <!-- Gráfico -->
+    <svg class="wm wm-2" viewBox="0 0 48 48"><path d="M6 6v36h36"/><path d="M12 34l8-10 6 6 12-18"/></svg>
+    <!-- Checklist -->
+    <svg class="wm wm-3" viewBox="0 0 40 48"><rect x="4" y="4" width="32" height="40" rx="2"/><path d="M10 14l3 3 5-6M10 26l3 3 5-6M10 38h12"/><path d="M22 26h10M22 38h10"/></svg>
+    <!-- Lupa -->
+    <svg class="wm wm-4" viewBox="0 0 44 44"><circle cx="19" cy="19" r="12"/><path d="M28 28l12 12"/></svg>
+    <!-- Engrenagem -->
+    <svg class="wm wm-5" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="16"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/></svg>
+    <!-- Indicadores (gauge) -->
+    <svg class="wm wm-6" viewBox="0 0 48 32"><path d="M4 28a20 20 0 0 1 40 0"/><path d="M24 28l10-14"/><circle cx="24" cy="28" r="2"/></svg>
+    <!-- Diagrama de processo -->
+    <svg class="wm wm-7" viewBox="0 0 64 24"><rect x="2" y="6" width="16" height="12" rx="6"/><path d="M18 12h8m0 0l-3-3m3 3l-3 3"/><rect x="26" y="6" width="16" height="12" rx="6"/><path d="M42 12h8m0 0l-3-3m3 3l-3 3"/><path d="M50 6v12"/><circle cx="54" cy="12" r="6"/></svg>
+    <!-- Ciclo PDCA -->
+    <svg class="wm wm-8" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 8a16 16 0 0 1 14 8M38 16l-2-6m2 6l-6-1"/><path d="M24 40a16 16 0 0 1-14-8M10 32l2 6m-2-6l6 1"/></svg>
+    <!-- Ishikawa -->
+    <svg class="wm wm-9" viewBox="0 0 64 36"><path d="M4 18h44"/><path d="M50 18l-8-6m8 6l-8 6"/><path d="M12 18l4-10m0 0h6M16 8l4 10"/><path d="M26 18l4-10m0 0h6M30 8l4 10"/><path d="M14 18l4 10m0 0h6M18 28l4-10"/><path d="M28 18l4 10m0 0h6M32 28l4-10"/></svg>
+    <!-- Riscos -->
+    <svg class="wm wm-10" viewBox="0 0 44 40"><path d="M22 4L40 36H4z"/><path d="M22 16v10M22 30v.5"/></svg>
+    <!-- Livro / enciclopédia -->
+    <svg class="wm wm-11" viewBox="0 0 52 40"><path d="M26 8c-4-3-10-4-22-4v32c12 0 18 1 22 4 4-3 10-4 22-4V4c-12 0-18 1-22 4z"/><path d="M26 8v32"/></svg>
+  </div>
+  <div class="wrap hero-inner">
+    <h1 class="hero-title">QualiPédia</h1>
+    <p class="hero-sub">Sua enciclopédia de Gestão da Qualidade.</p>
+    <p class="hero-desc">Um ambiente de consulta para compreender conceitos, encontrar ferramentas e aplicar a gestão da qualidade em diferentes áreas, processos e situações profissionais.</p>
+  </div>
+</section>
 
-  <section id="busca">
-    <h1>Minha cola de qualidade</h1>
-    <p class="lead">O que sei, o que construí e qual ferramenta usar — em qualquer empresa, setor ou momento da carreira.</p>
-    <input id="q" type="search" placeholder="Digite um tema, ferramenta ou situação… ex.: ishikawa, por onde começo" autocomplete="off">
-    <p class="hint" id="count"></p>
+<main>
+
+  <section id="busca" class="search-section">
+    <div class="wrap">
+      <input id="q" type="search" placeholder="Descreva uma situação, problema, área ou ferramenta..." autocomplete="off">
+      <div class="chips" id="chips">
+        <button class="chip" data-term="comunicação">Problema de comunicação</button>
+        <button class="chip" data-term="perda de clientes">Perda de clientes</button>
+        <button class="chip" data-term="vendas">Melhorar vendas</button>
+        <button class="chip" data-term="riscos em projetos">Riscos em projetos</button>
+        <button class="chip" data-term="medição e estatística">Medição e estatística</button>
+      </div>
+      <p class="hint" id="count"></p>
+    </div>
   </section>
 
   <section id="guia">
-    <h2>Qual ferramenta usar?</h2>
-    <p class="sub">Chega com o problema, sai com a ferramenta.</p>
-    <div class="cards" id="guia-cards"></div>
+    <div class="wrap">
+      <h2>Qual ferramenta usar?</h2>
+      <p class="sub">Chega com o problema, sai com a ferramenta certa.</p>
+      <div class="cards" id="guia-cards"></div>
+    </div>
   </section>
 
-  <section id="enciclopedia">
-    <h2>Enciclopédia</h2>
-    <p class="sub">Ficha padrão: conceito · como aplicar · exemplos · onde já usei.</p>
-    <div class="cards" id="enc-cards"></div>
+  <section id="enciclopedia" class="section-alt">
+    <div class="wrap">
+      <h2>Enciclopédia</h2>
+      <p class="sub">Ficha padrão: conceito · como aplicar · exemplos · onde já usei.</p>
+      <div class="cards" id="enc-cards"></div>
+    </div>
   </section>
 
   <section id="acervo">
-    <h2>Acervo pessoal</h2>
-    <p class="sub">Tudo que construí: metodologia, manuais, indicadores e projetos.</p>
-    <div class="cards" id="acervo-cards"></div>
+    <div class="wrap">
+      <h2>Acervo</h2>
+      <p class="sub">Metodologia, manuais, indicadores e projetos — o trabalho real aplicado.</p>
+      <div class="cards" id="acervo-cards"></div>
+    </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="wrap">QualiPédia · Bruna Silva Ramos Sousa · <span id="ano"></span></div>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <p class="footer-name">QualiPédia</p>
+      <p class="footer-tag">Sua enciclopédia de gestão da qualidade.</p>
+    </div>
+    <div class="footer-meta">
+      <p class="footer-author">Projeto autoral — Bruna Silva Ramos</p>
+      <p class="footer-copy">© <span id="ano">2026</span> — Conteúdo, idealização e curadoria.</p>
+    </div>
+  </div>
 </footer>
 
 <script src="qualipedia/data.js"></script>
