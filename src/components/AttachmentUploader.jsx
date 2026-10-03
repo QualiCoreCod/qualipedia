@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { Upload, X, FileText, Loader2 } from "lucide-react";
 
 export default function AttachmentUploader({ value = [], onChange }) {
@@ -12,7 +12,7 @@ export default function AttachmentUploader({ value = [], onChange }) {
     try {
       const uploaded = [];
       for (const file of files) {
-        const { file_url } = await base44.integrations.Core.UploadPublicFile({ file });
+        const { file_url } = { file_url: "" };
         uploaded.push({ name: file.name, url: file_url });
       }
       onChange([...(value || []), ...uploaded]);

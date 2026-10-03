@@ -54,11 +54,10 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      {/* Add your page Route elements here */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/login" element={<div className="p-8 text-center text-xl mt-20">Área em preparação</div>} />
+      <Route path="/register" element={<div className="p-8 text-center text-xl mt-20">Área em preparação</div>} />
+      <Route path="/forgot-password" element={<div className="p-8 text-center text-xl mt-20">Área em preparação</div>} />
+      <Route path="/reset-password" element={<div className="p-8 text-center text-xl mt-20">Área em preparação</div>} />
       {/* Public routes — no login required */}
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
@@ -69,12 +68,7 @@ const AuthenticatedApp = () => {
         <Route path="/setor/:sectorId" element={<SectorTrail />} />
         <Route path="/iso" element={<ISO9001 />} />
         <Route path="/acervo" element={<Materials />} />
-      </Route>
-      {/* Protected routes — login required */}
-      <Route element={<ProtectedRoute unauthenticatedElement={<RedirectToLogin />} />}>
-        <Route element={<Layout />}>
-          <Route path="/adicionar" element={<AddTheme />} />
-        </Route>
+        <Route path="/adicionar" element={<div className="p-8 text-center text-xl mt-20">Área em preparação</div>} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

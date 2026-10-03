@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { Search, BookOpen, Compass, FolderOpen, ArrowRight, ChevronRight, Layers, MapPin, Award } from "lucide-react";
 import SmartSearch from "@/components/SmartSearch";
 import GuidedWizard from "@/components/GuidedWizard";
@@ -29,9 +29,9 @@ export default function Home() {
 
   useEffect(() => {
     Promise.all([
-      base44.entities.QualityTheme.list("-updated_date", 200).catch(() => []),
-      base44.entities.Material.list("-updated_date", 100).catch(() => []),
-      base44.entities.DecisionGuide.list("-updated_date", 100).catch(() => []),
+      dataService.listQualityThemes(),
+      dataService.listMaterials(),
+      dataService.listDecisionGuides(),
     ]).then(([t, m, g]) => {
       setThemes(t || []);
       setMaterials(m || []);

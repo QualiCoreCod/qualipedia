@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { ArrowLeft, Award, FileText, Upload, Loader2, X, Trash2, BookOpen, RefreshCw, ShieldCheck } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import ToolDiagram from "@/components/ToolDiagram";
@@ -45,7 +45,7 @@ export default function ISO9001() {
   const [saving, setSaving] = useState(false);
 
   const load = () =>
-    base44.entities.IsoDocument.list("-updated_date", 100).then((d) => {
+    dataService.listIsoDocuments().then((d) => {
       setDocs(d || []);
       setLoading(false);
     });
@@ -59,7 +59,7 @@ export default function ISO9001() {
     if (!file) return;
     setUploading(true);
     try {
-      const { file_url } = await base44.integrations.Core.UploadPublicFile({ file });
+      const { file_url } = { file_url: "" };
       setNewDoc((d) => ({ ...d, file_url, title: d.title || file.name }));
     } finally {
       setUploading(false);
@@ -71,7 +71,7 @@ export default function ISO9001() {
     e.preventDefault();
     setSaving(true);
     try {
-      await base44.entities.IsoDocument.create(newDoc);
+      /* create mocked */
       setNewDoc({ title: "", description: "", file_url: "", clause: "Geral" });
       setShowForm(false);
       await load();
@@ -81,7 +81,7 @@ export default function ISO9001() {
   };
 
   const remove = async (id) => {
-    await base44.entities.IsoDocument.delete(id);
+    /* delete mocked */
     load();
   };
 

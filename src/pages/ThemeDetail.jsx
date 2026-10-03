@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { ArrowLeft, BookOpen, Lightbulb, ListChecks, ClipboardList, MapPin, Trash2, Pencil, Paperclip, FileText, History, HelpCircle, ExternalLink } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import AttachmentUploader from "@/components/AttachmentUploader";

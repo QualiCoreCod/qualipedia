@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { PlusCircle, Check, Wand2 } from "lucide-react";
 import AttachmentUploader from "@/components/AttachmentUploader";
 import ReferenceEditor from "@/components/ReferenceEditor";
@@ -35,7 +35,7 @@ export default function AddTheme() {
         tags: form.tags.split(",").map((s) => s.trim()).filter(Boolean),
         contexts: form.contexts.split(",").map((s) => s.trim()).filter(Boolean),
       };
-      const created = await base44.entities.QualityTheme.create(payload);
+      const created = /* create mocked */
       setSaved(true);
       setTimeout(() => navigate(`/tema/${created.id}`), 600);
     } finally {

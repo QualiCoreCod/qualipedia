@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { Compass, Plus, Lightbulb, ListChecks, X, ExternalLink } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import ReferenceList from "@/components/ReferenceList";
@@ -16,7 +16,7 @@ export default function DecisionGuidePage() {
   const [saving, setSaving] = useState(false);
 
   const load = () =>
-    base44.entities.DecisionGuide.list("-updated_date", 100).then((g) => {
+    dataService.listDecisionGuides().then((g) => {
       setGuides(g || []);
       setLoading(false);
     });
@@ -29,7 +29,7 @@ export default function DecisionGuidePage() {
     e.preventDefault();
     setSaving(true);
     try {
-      await base44.entities.DecisionGuide.create(form);
+      /* create mocked */
       setForm({ situation: "", recommended_tool: "", reasoning: "", applies_to: "", steps: "", category: "Melhoria", references: [] });
       setShowForm(false);
       await load();
@@ -39,7 +39,7 @@ export default function DecisionGuidePage() {
   };
 
   const remove = async (id) => {
-    await base44.entities.DecisionGuide.delete(id);
+    /* delete mocked */
     load();
   };
 

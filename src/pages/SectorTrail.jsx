@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { ArrowLeft, Compass, BookOpen, FolderOpen, Lightbulb } from "lucide-react";
 import { getSector } from "@/lib/sectors";
 
@@ -15,9 +15,9 @@ export default function SectorTrail() {
   useEffect(() => {
     if (!sector) { setLoading(false); return; }
     Promise.all([
-      base44.entities.QualityTheme.list("-updated_date", 200).catch(() => []),
-      base44.entities.DecisionGuide.list("-updated_date", 100).catch(() => []),
-      base44.entities.Material.list("-updated_date", 100).catch(() => []),
+      dataService.listQualityThemes(),
+      dataService.listDecisionGuides(),
+      dataService.listMaterials(),
     ]).then(([t, g, m]) => {
       setThemes(t || []);
       setGuides(g || []);

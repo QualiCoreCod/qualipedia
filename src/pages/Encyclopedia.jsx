@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { BookOpen, Search, Plus, ArrowRight } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 
@@ -14,7 +14,7 @@ export default function Encyclopedia() {
   const [cat, setCat] = useState("Todas");
 
   useEffect(() => {
-    base44.entities.QualityTheme.list("-updated_date", 200).then((t) => {
+    dataService.listQualityThemes().then((t) => {
       setThemes(t || []);
       setLoading(false);
     });

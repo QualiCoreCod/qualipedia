@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { Sparkles, Loader2, ArrowRight, BookOpen, Compass, FolderOpen, Search } from "lucide-react";
 
 export default function SmartSearch({ themes = [], guides = [], materials = [] }) {

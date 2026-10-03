@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { dataService } from "@/services/dataService";
 import { FolderOpen, FileText, ArrowRight, Lock, TrendingUp, Award } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import AcervoSection from "@/components/AcervoSection";
@@ -77,7 +77,7 @@ export default function Materials() {
   const [loadingDocs, setLoadingDocs] = useState(true);
 
   useEffect(() => {
-    base44.entities.IsoDocument.list("-updated_date", 100)
+    dataService.listIsoDocuments()
       .then((d) => { setDocs(d || []); setLoadingDocs(false); })
       .catch(() => setLoadingDocs(false));
   }, []);
