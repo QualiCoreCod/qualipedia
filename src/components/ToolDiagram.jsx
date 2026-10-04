@@ -1,346 +1,379 @@
 import React from "react";
 
-const S = { stroke: "currentColor", strokeWidth: 1, fill: "none" };
-const STROKE = { stroke: "currentColor", strokeWidth: 1.5, fill: "none" };
-const TXT = { fontSize: 10, fill: "currentColor", fontFamily: "ui-sans-serif, system-ui" };
-const TXT_BOLD = { fontSize: 10, fill: "currentColor", fontFamily: "ui-sans-serif, system-ui", fontWeight: 600 };
-const TXT_SM = { fontSize: 8, fill: "currentColor", fontFamily: "ui-sans-serif, system-ui" };
+// Definições de Estilo Vetorial Corporativo
+const PALETTE = {
+  line: "#1E293B",        // slate-800
+  petroleo: "#172B3F",    // azul petróleo institucional
+  destaque: "#2563EB",    // azul interação
+  nodeBg: "#FFFFFF",
+  nodeHeader: "#F1F5F9",
+  textPrimary: "#0F172A",
+  textMuted: "#475569",
+  accentBg: "#EFF6FF",
+  alertBg: "#FEF2F2",
+  alertBorder: "#EF4444"
+};
 
+function DiagramDefs() {
+  return (
+    <defs>
+      <marker
+        id="diagram-arrow"
+        viewBox="0 0 10 10"
+        refX="6"
+        refY="5"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto-start-reverse"
+      >
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1E293B" />
+      </marker>
+      <marker
+        id="diagram-arrow-blue"
+        viewBox="0 0 10 10"
+        refX="6"
+        refY="5"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto-start-reverse"
+      >
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563EB" />
+      </marker>
+    </defs>
+  );
+}
+
+// 1. Diagrama de Ishikawa (Espinha de Peixe 6M)
 function IshikawaDiagram() {
-  return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <line x1="40" y1="140" x2="500" y2="140" {...STROKE} />
-      <rect x="500" y="120" width="84" height="40" rx="4" {...STROKE} />
-      <text x="542" y="138" textAnchor="middle" {...TXT_BOLD}>Efeito</text>
-      <text x="542" y="152" textAnchor="middle" {...TXT_SM}>problema</text>
-      {/* Top bones */}
-      {[{ x: 120, label: "Máquina" }, { x: 250, label: "Método" }, { x: 380, label: "Material" }].map((b, i) => (
-        <g key={i}>
-          <line x1={b.x} y1="140" x2={b.x - 40} y2="60" {...S} />
-          <text x={b.x - 40} y="50" textAnchor="middle" {...TXT_BOLD}>{b.label}</text>
-          <line x1={b.x - 22} y1="90" x2={b.x - 12} y2="90" {...S} />
-          <line x1={b.x - 30} y1="110" x2={b.x - 20} y2="110" {...S} />
-        </g>
-      ))}
-      {/* Bottom bones */}
-      {[{ x: 120, label: "Mão de obra" }, { x: 250, label: "Medição" }, { x: 380, label: "Meio ambiente" }].map((b, i) => (
-        <g key={i}>
-          <line x1={b.x} y1="140" x2={b.x - 40} y2="220" {...S} />
-          <text x={b.x - 40} y="238" textAnchor="middle" {...TXT_BOLD}>{b.label}</text>
-          <line x1={b.x - 22} y1="190" x2={b.x - 12} y2="190" {...S} />
-          <line x1={b.x - 30} y1="170" x2={b.x - 20} y2="170" {...S} />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function FluxogramaDiagram() {
-  return (
-    <svg viewBox="0 0 600 200" className="w-full" style={{ color: "#444" }}>
-      <ellipse cx="60" cy="100" rx="36" ry="20" {...STROKE} />
-      <text x="60" y="104" textAnchor="middle" {...TXT}>Início</text>
-      <line x1="96" y1="100" x2="130" y2="100" {...STROKE} />
-      <polygon points="130,100 150,80 150,120" fill="currentColor" stroke="none" />
-      <rect x="155" y="80" width="90" height="40" rx="2" {...STROKE} />
-      <text x="200" y="104" textAnchor="middle" {...TXT}>Processo</text>
-      <line x1="245" y1="100" x2="275" y2="100" {...STROKE} />
-      <polygon points="275,100 295,80 295,120" fill="currentColor" stroke="none" />
-      <polygon points="300,100 340,70 380,100 340,130" {...STROKE} />
-      <text x="340" y="104" textAnchor="middle" {...TXT}>Decisão</text>
-      <line x1="380" y1="100" x2="410" y2="100" {...STROKE} />
-      <polygon points="410,100 430,80 430,120" fill="currentColor" stroke="none" />
-      <rect x="435" y="80" width="80" height="40" rx="2" {...STROKE} />
-      <text x="475" y="104" textAnchor="middle" {...TXT}>Ação</text>
-      <line x1="515" y1="100" x2="540" y2="100" {...STROKE} />
-      <polygon points="540,100 560,80 560,120" fill="currentColor" stroke="none" />
-      <ellipse cx="575" cy="100" rx="20" ry="20" {...STROKE} />
-      <text x="575" y="104" textAnchor="middle" {...TXT}>Fim</text>
-      <text x="340" y="155" textAnchor="middle" {...TXT_SM}>Sim</text>
-      <path d="M 340 130 Q 340 165 300 165 Q 200 165 200 120" {...S} />
-      <text x="250" y="160" textAnchor="middle" {...TXT_SM}>Não</text>
-    </svg>
-  );
-}
-
-function ParetoDiagram() {
-  const bars = [80, 60, 42, 28, 18, 10];
-  const cats = ["A", "B", "C", "D", "E", "F"];
-  const cum = bars.map((_, i) => bars.slice(0, i + 1).reduce((a, b) => a + b, 0));
-  const total = bars.reduce((a, b) => a + b, 0);
-  const cumPct = cum.map((c) => (c / total) * 100);
-  return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <line x1="50" y1="240" x2="560" y2="240" {...STROKE} />
-      <line x1="50" y1="40" x2="50" y2="240" {...STROKE} />
-      <line x1="560" y1="40" x2="560" y2="240" {...STROKE} />
-      {bars.map((h, i) => {
-        const x = 60 + i * 82;
-        const bh = (h / 80) * 180;
-        return (
-          <g key={i}>
-            <rect x={x} y={240 - bh} width="60" height={bh} {...S} />
-            <text x={x + 30} y="255" textAnchor="middle" {...TXT_SM}>{cats[i]}</text>
-          </g>
-        );
-      })}
-      <polyline
-        points={cumPct.map((p, i) => `${60 + i * 82 + 30},${240 - (p / 100) * 180}`).join(" ")}
-        {...STROKE}
-      />
-      {cumPct.map((p, i) => (
-        <circle key={i} cx={60 + i * 82 + 30} cy={240 - (p / 100) * 180} r="2.5" fill="currentColor" stroke="none" />
-      ))}
-      {[0, 25, 50, 75, 100].map((p) => (
-        <g key={p}>
-          <text x="568" y={244 - (p / 100) * 180} {...TXT_SM}>{p}%</text>
-        </g>
-      ))}
-      <text x="305" y="275" textAnchor="middle" {...TXT_SM}>Categorias (defeitos)</text>
-      <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" {...TXT_SM}>Frequência</text>
-    </svg>
-  );
-}
-
-function HistogramaDiagram() {
-  const bars = [15, 35, 70, 95, 80, 45, 20, 8];
-  return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <line x1="50" y1="240" x2="560" y2="240" {...STROKE} />
-      <line x1="50" y1="40" x2="50" y2="240" {...STROKE} />
-      {bars.map((h, i) => {
-        const x = 55 + i * 62;
-        const bh = (h / 95) * 180;
-        return <rect key={i} x={x} y={240 - bh} width="56" height={bh} {...S} />;
-      })}
-      {[0, 25, 50, 75, 95].map((v, i) => (
-        <text key={i} x="42" y={244 - (v / 95) * 180} textAnchor="end" {...TXT_SM}>{v}</text>
-      ))}
-      <text x="305" y="270" textAnchor="middle" {...TXT_SM}>Valores (bins)</text>
-      <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" {...TXT_SM}>Frequência</text>
-      <path d="M 55 200 Q 200 50 400 60 Q 500 80 555 220" {...S} strokeDasharray="3 3" />
-    </svg>
-  );
-}
-
-function CartaControleDiagram() {
-  const points = [72, 75, 78, 73, 76, 79, 74, 77, 80, 75, 73, 76, 78, 95, 74, 77];
-  const min = 60, max = 100, cl = 76, ucl = 90, lcl = 62;
-  const y = (v) => 240 - ((v - min) / (max - min)) * 180;
-  return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <line x1="50" y1="240" x2="560" y2="240" {...STROKE} />
-      <line x1="50" y1="40" x2="50" y2="240" {...STROKE} />
-      <line x1="50" y1={y(cl)} x2="560" y2={y(cl)} {...STROKE} />
-      <text x="565" y={y(cl) + 3} {...TXT_SM}>LC</text>
-      <line x1="50" y1={y(ucl)} x2="560" y2={y(ucl)} {...S} strokeDasharray="4 3" />
-      <text x="565" y={y(ucl) + 3} {...TXT_SM}>LSC</text>
-      <line x1="50" y1={y(lcl)} x2="560" y2={y(lcl)} {...S} strokeDasharray="4 3" />
-      <text x="565" y={y(lcl) + 3} {...TXT_SM}>LIC</text>
-      <polyline
-        points={points.map((p, i) => `${60 + i * 31},${y(p)}`).join(" ")}
-        {...S}
-      />
-      {points.map((p, i) => (
-        <circle key={i} cx={60 + i * 31} cy={y(p)} r="2.5" fill={p > ucl || p < lcl ? "currentColor" : "none"} stroke="currentColor" strokeWidth={1} />
-      ))}
-      <text x="305" y="270" textAnchor="middle" {...TXT_SM}>Amostras (tempo)</text>
-      <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" {...TXT_SM}>Valor medido</text>
-    </svg>
-  );
-}
-
-function DispersaoDiagram() {
-  const points = [
-    [80, 85], [100, 90], [120, 95], [140, 100], [160, 110], [180, 105], [200, 120], [220, 125], [240, 130], [260, 140], [280, 135], [300, 150], [320, 145], [340, 160], [360, 155], [380, 170], [400, 165], [420, 180], [440, 175], [460, 190], [480, 185], [500, 200], [520, 195],
+  const causes = [
+    { label: "Método", x: 130, y: 50, branchX: 190, items: ["Procedimento desatualizado", "Falta de padrão operacional"] },
+    { label: "Máquina", x: 280, y: 50, branchX: 340, items: ["Falta de calibração", "Desgaste preventivo"] },
+    { label: "Material", x: 430, y: 50, branchX: 490, items: ["Lote divergente", "Especificação incorreta"] },
+    { label: "Mão de Obra", x: 130, y: 270, branchX: 190, items: ["Treinamento insuficiente", "Sobrecarga de tarefas"] },
+    { label: "Medição", x: 280, y: 270, branchX: 340, items: ["Instrumento inadequado", "Critério subjetivo"] },
+    { label: "Meio Ambiente", x: 430, y: 270, branchX: 490, items: ["Ruído excessivo", "Temperatura e layout"] }
   ];
+
   return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <line x1="50" y1="240" x2="560" y2="240" {...STROKE} />
-      <line x1="50" y1="40" x2="50" y2="240" {...STROKE} />
-      {points.map(([x, y], i) => (
-        <circle key={i} cx={50 + x / 600 * 510} cy={240 - (y - 70) / 140 * 180} r="2.5" fill="currentColor" stroke="none" />
-      ))}
-      <line x1="60" y1="200" x2="555" y2="70" {...S} strokeDasharray="4 3" />
-      <text x="305" y="270" textAnchor="middle" {...TXT_SM}>Variável X</text>
-      <text x="20" y="140" textAnchor="middle" transform="rotate(-90 20 140)" {...TXT_SM}>Variável Y</text>
-    </svg>
+    <div className="w-full overflow-x-auto py-2">
+      <svg viewBox="0 0 760 360" className="w-full min-w-[680px] bg-slate-50/50 rounded-2xl border-2 border-slate-200">
+        <DiagramDefs />
+
+        {/* Espinha Principal Central */}
+        <line x1="50" y1="180" x2="570" y2="180" stroke={PALETTE.line} strokeWidth="3.5" markerEnd="url(#diagram-arrow)" />
+
+        {/* Cabeça do Problema / Efeito */}
+        <g transform="translate(580, 140)">
+          <rect width="160" height="80" rx="12" fill={PALETTE.petroleo} stroke={PALETTE.line} strokeWidth="2" />
+          <text x="80" y="34" fill="#FFFFFF" fontSize="13" fontWeight="800" textAnchor="middle" letterSpacing="0.05em">EFEITO / DESVIO</text>
+          <text x="80" y="56" fill="#93C5FD" fontSize="12" fontWeight="600" textAnchor="middle">Problema a Analisar</text>
+        </g>
+
+        {/* Espinhas Secundárias (6M) */}
+        {causes.map((c, i) => {
+          const isTop = i < 3;
+          return (
+            <g key={c.label}>
+              {/* Linha da espinha */}
+              <line
+                x1={c.x}
+                y1={isTop ? c.y + 40 : c.y}
+                x2={c.branchX}
+                y2="180"
+                stroke={PALETTE.destaque}
+                strokeWidth="2.5"
+                markerEnd="url(#diagram-arrow-blue)"
+              />
+
+              {/* Caixa de Categoria (6M) */}
+              <rect
+                x={c.x - 65}
+                y={isTop ? c.y : c.y}
+                width="130"
+                height="36"
+                rx="8"
+                fill="#FFFFFF"
+                stroke={PALETTE.destaque}
+                strokeWidth="2"
+              />
+              <text
+                x={c.x}
+                y={isTop ? c.y + 23 : c.y + 23}
+                fill={PALETTE.petroleo}
+                fontSize="13"
+                fontWeight="700"
+                textAnchor="middle"
+              >
+                {c.label}
+              </text>
+
+              {/* Subcausas */}
+              {c.items.map((item, idx) => {
+                const subY = isTop ? c.y + 65 + idx * 26 : c.y - 45 + idx * 26;
+                const subX = c.x + 10;
+                return (
+                  <g key={item}>
+                    <line x1={subX} y1={subY} x2={subX + 45} y2={subY} stroke="#94A3B8" strokeWidth="1.5" />
+                    <text x={subX + 48} y={subY + 4} fill={PALETTE.textMuted} fontSize="10.5" fontWeight="500">
+                      {item}
+                    </text>
+                  </g>
+                );
+              })}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 }
 
-function SipocDiagram() {
-  const cols = [
-    { title: "Fornecedores", items: ["Fornecedor A", "Cliente interno"] },
-    { title: "Entradas", items: ["Requisição", "Especificação"] },
-    { title: "Processo", items: ["1. Receber", "2. Processar", "3. Entregar"] },
-    { title: "Saídas", items: ["Produto conforme", "Relatório"] },
-    { title: "Clientes", items: ["Cliente final", "Próxima etapa"] },
-  ];
-  return (
-    <svg viewBox="0 0 600 240" className="w-full" style={{ color: "#444" }}>
-      {cols.map((col, ci) => {
-        const x = 20 + ci * 116;
-        return (
-          <g key={ci}>
-            <rect x={x} y="20" width="106" height="28" {...STROKE} />
-            <text x={x + 53} y="38" textAnchor="middle" {...TXT_BOLD}>{col.title}</text>
-            {col.items.map((item, ii) => {
-              const y = 56 + ii * 30;
-              return (
-                <g key={ii}>
-                  <rect x={x} y={y} width="106" height="26" {...S} />
-                  <text x={x + 53} y={y + 17} textAnchor="middle" {...TXT_SM}>{item}</text>
-                </g>
-              );
-            })}
-          </g>
-        );
-      })}
-      {[0, 1, 2, 3].map((i) => (
-        <polygon key={i} points={`${136 + i * 116},34 ${142 + i * 116},28 ${142 + i * 116},40`} fill="currentColor" stroke="none" />
-      ))}
-    </svg>
-  );
-}
-
+// 2. Ciclo PDCA (Deming)
 function PdcaDiagram() {
-  const cx = 300, cy = 130, r = 85;
-  return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      <circle cx={cx} cy={cy} r={r} {...STROKE} />
-      <line x1={cx} y1={cy - r} x2={cx} y2={cy + r} {...S} />
-      <line x1={cx - r} y1={cy} x2={cx + r} y2={cy} {...S} />
-      <text x={cx} y={cy - r - 8} textAnchor="middle" {...TXT_BOLD}>Plan (Planejar)</text>
-      <text x={cx} y={cy - r + 6} textAnchor="middle" {...TXT_SM}>definir metas e plano</text>
-      <text x={cx + r + 8} y={cy + 4} textAnchor="start" {...TXT_BOLD}>Do (Executar)</text>
-      <text x={cx + r + 8} y={cy + 18} textAnchor="start" {...TXT_SM}>executar o plano</text>
-      <text x={cx} y={cy + r + 18} textAnchor="middle" {...TXT_BOLD}>Check (Verificar)</text>
-      <text x={cx} y={cy + r + 32} textAnchor="middle" {...TXT_SM}>avaliar resultados</text>
-      <text x={cx - r - 8} y={cy + 4} textAnchor="end" {...TXT_BOLD}>Act (Agir)</text>
-      <text x={cx - r - 8} y={cy + 18} textAnchor="end" {...TXT_SM}>padronizar ou corrigir</text>
-      <path d="M 300 45 A 85 85 0 0 1 385 130" {...S} strokeDasharray="3 3" />
-      <polygon points="385,130 378,122 382,135" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function DmaicDiagram() {
-  const phases = ["Define", "Measure", "Analyze", "Improve", "Control"];
-  const descs = ["definir", "medir", "analisar", "melhorar", "controlar"];
-  return (
-    <svg viewBox="0 0 600 160" className="w-full" style={{ color: "#444" }}>
-      {phases.map((p, i) => {
-        const x = 30 + i * 114;
-        return (
-          <g key={i}>
-            <rect x={x} y="40" width="100" height="50" rx="4" {...STROKE} />
-            <text x={x + 50} y="62" textAnchor="middle" {...TXT_BOLD}>{p}</text>
-            <text x={x + 50} y="78" textAnchor="middle" {...TXT_SM}>{descs[i]}</text>
-            {i < 4 && <polygon points={`${x + 104},65 ${x + 114},58 ${x + 114},72`} fill="currentColor" stroke="none" />}
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-function FiveSDiagram() {
-  const sensos = [
-    { jp: "Seiri", pt: "Utilização", desc: "separar o necessário do desnecessário" },
-    { jp: "Seiton", pt: "Organização", desc: "um lugar para cada coisa" },
-    { jp: "Seiso", pt: "Limpeza", desc: "limpar e inspecionar" },
-    { jp: "Seiketsu", pt: "Padronização", desc: "manter os 3S anteriores" },
-    { jp: "Shitsuke", pt: "Disciplina", desc: "sustentar pela educação" },
+  const steps = [
+    { letter: "P", name: "PLAN", label: "Planejar", desc: "Metas, plano de ação 5W2H e mapeamento de riscos", x: 60, y: 40, color: "#1D4ED8", bg: "#EFF6FF" },
+    { letter: "D", name: "DO", label: "Executar", desc: "Capacitar equipes e executar o processo conforme padrão", x: 370, y: 40, color: "#0D9488", bg: "#F0FDFA" },
+    { letter: "A", name: "ACT", label: "Agir Corretivamente", desc: "Padronizar sucessos ou reiniciar ciclo de melhoria", x: 60, y: 210, color: "#B45309", bg: "#FEF3C7" },
+    { letter: "C", name: "CHECK", label: "Verificar", desc: "Monitorar indicadores, comparar resultados e auditar", x: 370, y: 210, color: "#4338CA", bg: "#EEF2FF" }
   ];
+
   return (
-    <svg viewBox="0 0 600 220" className="w-full" style={{ color: "#444" }}>
-      {sensos.map((s, i) => {
-        const x = 20 + i * 116;
-        return (
-          <g key={i}>
-            <rect x={x} y="30" width="106" height="120" rx="4" {...STROKE} />
-            <text x={x + 53} y="55" textAnchor="middle" {...TXT_BOLD}>{s.jp}</text>
-            <text x={x + 53} y="75" textAnchor="middle" {...TXT}>{s.pt}</text>
-            <line x1={x + 10} y1="85" x2={x + 96} y2="85" {...S} />
-            {s.desc.split(" ").reduce((acc, word, wi) => {
-              const line = acc[acc.length - 1];
-              if (line.length + word.length + 1 < 18) {
-                acc[acc.length - 1] = line + (line ? " " : "") + word;
-              } else {
-                acc.push(word);
-              }
-              return acc;
-            }, [""]).map((line, li) => (
-              <text key={li} x={x + 53} y={105 + li * 14} textAnchor="middle" {...TXT_SM}>{line}</text>
-            ))}
-            {i < 4 && <polygon points={`${x + 110},90 ${x + 116},84 ${x + 116},96`} fill="currentColor" stroke="none" />}
+    <div className="w-full overflow-x-auto py-2">
+      <svg viewBox="0 0 700 390" className="w-full min-w-[620px] bg-slate-50/50 rounded-2xl border-2 border-slate-200">
+        <DiagramDefs />
+
+        {/* Setas circulares direcionais */}
+        <path d="M 330 90 L 360 90" stroke={PALETTE.line} strokeWidth="2.5" markerEnd="url(#diagram-arrow)" />
+        <path d="M 500 170 L 500 200" stroke={PALETTE.line} strokeWidth="2.5" markerEnd="url(#diagram-arrow)" />
+        <path d="M 360 270 L 330 270" stroke={PALETTE.line} strokeWidth="2.5" markerEnd="url(#diagram-arrow)" />
+        <path d="M 190 200 L 190 170" stroke={PALETTE.line} strokeWidth="2.5" markerEnd="url(#diagram-arrow)" />
+
+        {/* 4 Blocos do Quadrante */}
+        {steps.map((s) => (
+          <g key={s.letter} transform={`translate(${s.x}, ${s.y})`}>
+            <rect width="260" height="120" rx="14" fill="#FFFFFF" stroke={s.color} strokeWidth="2.5" />
+            <rect width="260" height="38" rx="12" fill={s.bg} />
+            <rect y="26" width="260" height="12" fill={s.bg} />
+            <line x1="0" y1="38" x2="260" y2="38" stroke={s.color} strokeWidth="1.5" />
+
+            <circle cx="28" cy="20" r="13" fill={s.color} />
+            <text x="28" y="25" fill="#FFFFFF" fontSize="13" fontWeight="900" textAnchor="middle">{s.letter}</text>
+
+            <text x="50" y="25" fill={s.color} fontSize="14" fontWeight="800">{s.name}</text>
+            <text x="100" y="25" fill={PALETTE.textMuted} fontSize="12" fontWeight="600">({s.label})</text>
+
+            <text x="18" y="70" fill={PALETTE.textPrimary} fontSize="12" fontWeight="600" width="220">
+              Objetivo da Fase:
+            </text>
+            <text x="18" y="90" fill={PALETTE.textMuted} fontSize="11" fontWeight="400">
+              {s.desc}
+            </text>
           </g>
-        );
-      })}
-    </svg>
+        ))}
+
+        {/* Núcleo Central */}
+        <circle cx="345" cy="185" r="28" fill={PALETTE.petroleo} stroke="#FFFFFF" strokeWidth="4" />
+        <text x="345" y="190" fill="#FFFFFF" fontSize="10.5" fontWeight="800" textAnchor="middle">MELHORIA</text>
+      </svg>
+    </div>
   );
 }
 
-function MatrizGutDiagram() {
+// 3. Matriz GUT (Gravidade, Urgência e Tendência)
+function GutMatrixDiagram() {
   return (
-    <svg viewBox="0 0 600 280" className="w-full" style={{ color: "#444" }}>
-      {/* 3D box effect */}
-      <g>
-        {/* Front face - Gravidade x Urgência */}
-        <rect x="80" y="60" width="200" height="160" {...STROKE} />
-        <line x1="80" y1="140" x2="280" y2="140" {...S} />
-        <line x1="180" y1="60" x2="180" y2="220" {...S} />
-        <text x="180" y="50" textAnchor="middle" {...TXT_BOLD}>Urgência</text>
-        <text x="70" y="140" textAnchor="middle" transform="rotate(-90 70 140)" {...TXT_BOLD}>Gravidade</text>
-        <text x="130" y="100" textAnchor="middle" {...TXT_SM}>Alta/Alta</text>
-        <text x="230" y="100" textAnchor="middle" {...TXT_SM}>Baixa/Alta</text>
-        <text x="130" y="180" textAnchor="middle" {...TXT_SM}>Alta/Baixa</text>
-        <text x="230" y="180" textAnchor="middle" {...TXT_SM}>Baixa/Baixa</text>
-        {/* Top face - Tendência */}
-        <polygon points="80,60 280,60 340,30 140,30" {...STROKE} />
-        <text x="210" y="22" textAnchor="middle" {...TXT_BOLD}>Tendência</text>
-        {/* Right face */}
-        <polygon points="280,60 340,30 340,190 280,220" {...STROKE} />
-      </g>
-      <text x="300" y="265" textAnchor="middle" {...TXT_SM}>Priorização: Gravidade × Urgência × Tendência</text>
-    </svg>
+    <div className="w-full overflow-x-auto py-2">
+      <svg viewBox="0 0 700 320" className="w-full min-w-[620px] bg-slate-50/50 rounded-2xl border-2 border-slate-200">
+        {/* Título Header */}
+        <rect x="30" y="25" width="640" height="42" rx="10" fill={PALETTE.petroleo} />
+        <text x="350" y="52" fill="#FFFFFF" fontSize="14" fontWeight="800" textAnchor="middle" letterSpacing="0.05em">
+          ESTRUTURA DE PRIORIZAÇÃO: MATRIZ G.U.T. (Score = G × U × T)
+        </text>
+
+        {/* 3 Colunas Principais */}
+        {[
+          { name: "G — Gravidade", desc: "Qual é o impacto no negócio se nada for feito?", scale: "1 (Sem dano) a 5 (Extremamente grave)", color: "#DC2626", bg: "#FEF2F2", x: 30 },
+          { name: "U — Urgência", desc: "Qual é o tempo disponível antes do agravamento?", scale: "1 (Pode esperar) a 5 (Ação imediata)", color: "#D97706", bg: "#FFFBEB", x: 250 },
+          { name: "T — Tendência", desc: "O problema vai piorar com o passar dos dias?", scale: "1 (Não vai mudar) a 5 (Piora rápida)", color: "#2563EB", bg: "#EFF6FF", x: 470 },
+        ].map((col) => (
+          <g key={col.name} transform={`translate(${col.x}, 85)`}>
+            <rect width="200" height="150" rx="12" fill="#FFFFFF" stroke={col.color} strokeWidth="2.5" />
+            <rect width="200" height="38" rx="10" fill={col.bg} />
+            <rect y="26" width="200" height="12" fill={col.bg} />
+            <line x1="0" y1="38" x2="200" y2="38" stroke={col.color} strokeWidth="1.5" />
+
+            <text x="100" y="24" fill={col.color} fontSize="13" fontWeight="800" textAnchor="middle">{col.name}</text>
+            <text x="15" y="65" fill={PALETTE.textPrimary} fontSize="11.5" fontWeight="600">Critério de Avaliação:</text>
+            <text x="15" y="85" fill={PALETTE.textMuted} fontSize="11" width="170">{col.desc}</text>
+
+            <rect x="15" y="110" width="170" height="26" rx="6" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1" />
+            <text x="100" y="127" fill={col.color} fontSize="10.5" fontWeight="700" textAnchor="middle">{col.scale}</text>
+          </g>
+        ))}
+
+        {/* Barra de Ação de Resultado */}
+        <g transform="translate(30, 255)">
+          <rect width="640" height="42" rx="8" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="1.5" />
+          <text x="320" y="26" fill={PALETTE.textPrimary} fontSize="12" fontWeight="700" textAnchor="middle">
+            Regra Prática: Problemas com maior pontuação total (máx. 125) devem entrar imediatamente no Plano de Ação 5W2H.
+          </text>
+        </g>
+      </svg>
+    </div>
   );
 }
 
-const DIAGRAM_MAP = [
-  { match: "ishikawa", Component: IshikawaDiagram, caption: "Espinha-de-peixe com os 6M (Máquina, Método, Material, Mão de obra, Medição, Meio ambiente). Cada osso representa uma categoria de causa; as subespinhas detalham causas específicas que convergem para o efeito (problema) na cabeça." },
-  { match: "fluxograma", Component: FluxogramaDiagram, caption: "Símbolos técnicos: oval (terminal), retângulo (processo), losango (decisão) e setas de fluxo. O caminho 'Sim' segue em frente; o 'Não' retorna ao processo anterior." },
-  { match: "pareto", Component: ParetoDiagram, caption: "Barras em ordem decrescente de frequência e linha de percentual acumulado. O princípio 80/20: os primeiros itens (esquerda) concentram a maior parte dos problemas." },
-  { match: "histograma", Component: HistogramaDiagram, caption: "Distribuição de frequência dos dados. A forma da curva indica se o processo está centrado e se a variabilidade é simétrica. A linha tracejada sugere a curva normal." },
-  { match: "carta de controle", Component: CartaControleDiagram, caption: "Linha Central (LC) e Limites Superior (LSC) e Inferior (LIC) de controle. Pontos dentro dos limites indicam processo estável; ponto fora sinaliza causa especial de variação." },
-  { match: "cep", Component: CartaControleDiagram, caption: "Linha Central (LC) e Limites Superior (LSC) e Inferior (LIC) de controle. Pontos dentro dos limites indicam processo estável; ponto fora sinaliza causa especial de variação." },
-  { match: "dispers", Component: DispersaoDiagram, caption: "Nuvem de pontos que relaciona duas variáveis. A linha de tendência tracejada indica correlação: positiva (sobe), negativa (desce) ou ausente (dispersa)." },
-  { match: "sipoc", Component: SipocDiagram, caption: "Tabela de Fornecedores, Entradas, Processo, Saídas e Clientes. Cada coluna lista os elementos que alimentam e recebem o processo, delimitando o escopo antes de melhorias." },
-  { match: "pdca", Component: PdcaDiagram, caption: "Ciclo contínuo de quatro fases: Plan (planejar), Do (executar), Check (verificar) e Act (agir/padronizar). Cada volta eleva o nível de qualidade." },
-  { match: "dmaic", Component: DmaicDiagram, caption: "Sequência linear das cinco fases do Six Sigma: Define, Measure, Analyze, Improve, Control. Cada fase entrega subsídio para a próxima." },
-  { match: "5s", Component: FiveSDiagram, caption: "Os cinco sensos em sequência: Seiri (utilização), Seiton (organização), Seiso (limpeza), Seiketsu (padronização) e Shitsuke (disciplina). Cada senso sustenta o anterior." },
-  { match: "gut", Component: MatrizGutDiagram, caption: "Matriz tridimensional de Gravidade, Urgência e Tendência. Quanto maior a pontuação nas três dimensões, maior a prioridade de tratamento." },
-];
+// 4. SIPOC / Mapeamento de Processo
+function SipocDiagram() {
+  const columns = [
+    { title: "S — Supplier", subtitle: "Fornecedores", desc: "Quem fornece entradas para a etapa", x: 30 },
+    { title: "I — Input", subtitle: "Entradas", desc: "Materiais, dados ou solicitações necessárias", x: 160 },
+    { title: "P — Process", subtitle: "Processo", desc: "4 a 7 etapas macro sequenciais", x: 290, isProcess: true },
+    { title: "O — Output", subtitle: "Saídas", desc: "Produtos, relatórios ou serviços gerados", x: 420 },
+    { title: "C — Customer", subtitle: "Clientes", desc: "Quem recebe o resultado final do fluxo", x: 550 },
+  ];
 
-export function getDiagramInfo(tool) {
-  if (!tool) return null;
-  const lower = tool.toLowerCase();
-  return DIAGRAM_MAP.find((d) => lower.includes(d.match)) || null;
+  return (
+    <div className="w-full overflow-x-auto py-2">
+      <svg viewBox="0 0 700 260" className="w-full min-w-[640px] bg-slate-50/50 rounded-2xl border-2 border-slate-200">
+        <DiagramDefs />
+
+        {/* Setas Conectoras entre Etapas */}
+        <line x1="145" y1="130" x2="160" y2="130" stroke={PALETTE.destaque} strokeWidth="2.5" markerEnd="url(#diagram-arrow-blue)" />
+        <line x1="275" y1="130" x2="290" y2="130" stroke={PALETTE.destaque} strokeWidth="2.5" markerEnd="url(#diagram-arrow-blue)" />
+        <line x1="405" y1="130" x2="420" y2="130" stroke={PALETTE.destaque} strokeWidth="2.5" markerEnd="url(#diagram-arrow-blue)" />
+        <line x1="535" y1="130" x2="550" y2="130" stroke={PALETTE.destaque} strokeWidth="2.5" markerEnd="url(#diagram-arrow-blue)" />
+
+        {columns.map((c) => (
+          <g key={c.title} transform={`translate(${c.x}, 40)`}>
+            <rect
+              width="120"
+              height="180"
+              rx="12"
+              fill={c.isProcess ? PALETTE.petroleo : "#FFFFFF"}
+              stroke={c.isProcess ? PALETTE.line : "#CBD5E1"}
+              strokeWidth="2.5"
+            />
+            <text
+              x="60"
+              y="32"
+              fill={c.isProcess ? "#FFFFFF" : PALETTE.destaque}
+              fontSize="13"
+              fontWeight="900"
+              textAnchor="middle"
+            >
+              {c.title.split(" — ")[0]}
+            </text>
+            <text
+              x="60"
+              y="52"
+              fill={c.isProcess ? "#93C5FD" : PALETTE.textPrimary}
+              fontSize="11.5"
+              fontWeight="700"
+              textAnchor="middle"
+            >
+              {c.subtitle}
+            </text>
+            <line x1="15" y1="64" x2="105" y2="64" stroke={c.isProcess ? "#3B82F6" : "#E2E8F0"} strokeWidth="1.5" />
+            <text
+              x="60"
+              y="95"
+              fill={c.isProcess ? "#E2E8F0" : PALETTE.textMuted}
+              fontSize="10"
+              fontWeight="500"
+              textAnchor="middle"
+              width="100"
+            >
+              {c.desc}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+// 5. Plano de Ação 5W2H
+function FiveWTwoHDiagram() {
+  const questions = [
+    { q: "What?", pt: "O quê?", desc: "Ação a ser executada", bg: "#EFF6FF" },
+    { q: "Why?", pt: "Por quê?", desc: "Justificativa e benefício", bg: "#EFF6FF" },
+    { q: "Where?", pt: "Onde?", desc: "Local ou departamento", bg: "#EFF6FF" },
+    { q: "When?", pt: "Quando?", desc: "Prazo limite de entrega", bg: "#EFF6FF" },
+    { q: "Who?", pt: "Quem?", desc: "Responsável direto único", bg: "#EFF6FF" },
+    { q: "How?", pt: "Como?", desc: "Procedimento e etapas", bg: "#FEF3C7" },
+    { q: "How much?", pt: "Quanto custa?", desc: "Custo ou orçamento", bg: "#FEF3C7" },
+  ];
+
+  return (
+    <div className="w-full overflow-x-auto py-2">
+      <svg viewBox="0 0 720 220" className="w-full min-w-[660px] bg-slate-50/50 rounded-2xl border-2 border-slate-200">
+        <rect x="25" y="20" width="670" height="38" rx="8" fill={PALETTE.petroleo} />
+        <text x="360" y="44" fill="#FFFFFF" fontSize="13.5" fontWeight="800" textAnchor="middle" letterSpacing="0.05em">
+          METODOLOGIA 5W2H — DIRETRIZES DE EXECUÇÃO SEM AMBIGUIDADE
+        </text>
+
+        {questions.map((item, idx) => (
+          <g key={item.q} transform={`translate(${25 + idx * 96}, 75)`}>
+            <rect width="90" height="120" rx="10" fill="#FFFFFF" stroke={PALETTE.line} strokeWidth="2" />
+            <rect width="90" height="32" rx="8" fill={item.bg} />
+            <rect y="22" width="90" height="10" fill={item.bg} />
+            <line x1="0" y1="32" x2="90" y2="32" stroke="#CBD5E1" strokeWidth="1" />
+
+            <text x="45" y="21" fill={PALETTE.petroleo} fontSize="12" fontWeight="800" textAnchor="middle">{item.q}</text>
+            <text x="45" y="52" fill={PALETTE.destaque} fontSize="11" fontWeight="700" textAnchor="middle">{item.pt}</text>
+            <text x="45" y="80" fill={PALETTE.textMuted} fontSize="9.5" fontWeight="500" textAnchor="middle" width="80">
+              {item.desc}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+export function getDiagramInfo(toolTitle) {
+  if (!toolTitle) return null;
+  const t = toolTitle.toLowerCase();
+  if (t.includes("ishikawa") || t.includes("causa e efeito") || t.includes("espinha")) {
+    return { name: "Diagrama de Ishikawa", component: IshikawaDiagram };
+  }
+  if (t.includes("pdca") || t.includes("deming")) {
+    return { name: "Ciclo PDCA", component: PdcaDiagram };
+  }
+  if (t.includes("gut") || t.includes("priorizacao") || t.includes("gravidade")) {
+    return { name: "Matriz GUT", component: GutMatrixDiagram };
+  }
+  if (t.includes("sipoc") || t.includes("fluxo") || t.includes("processo")) {
+    return { name: "SIPOC", component: SipocDiagram };
+  }
+  if (t.includes("5w2h") || t.includes("plano de acao")) {
+    return { name: "5W2H", component: FiveWTwoHDiagram };
+  }
+  return null;
 }
 
 export default function ToolDiagram({ tool }) {
-  if (!tool) return null;
-  const lower = tool.toLowerCase();
-  const found = DIAGRAM_MAP.find((d) => lower.includes(d.match));
-  if (!found) return null;
-  const Diagram = found.Component;
+  const info = getDiagramInfo(tool);
+  if (!info) return null;
+  const Comp = info.component;
+
   return (
-    <section className="mt-8">
-      <h2 className="text-xs uppercase tracking-wider font-medium text-muted-foreground mb-3">Exemplo visual</h2>
-      <div className="rounded-xl border border-border bg-card p-6">
-        <Diagram />
-        <p className="text-xs text-muted-foreground leading-relaxed mt-4">{found.caption}</p>
+    <section className="mt-8 rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-sm">
+      <div className="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-100">
+        <div>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-destaque block">
+            Representação Técnica Vetorial
+          </span>
+          <h3 className="font-heading text-lg font-bold text-slate-900">
+            Estrutura Visual: {info.name}
+          </h3>
+        </div>
+        <span className="text-xs font-semibold text-slate-500 bg-slate-100 rounded-md px-2.5 py-1">
+          SVG Alta Precisão
+        </span>
       </div>
+      <Comp />
     </section>
   );
 }

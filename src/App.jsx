@@ -13,6 +13,10 @@ import Materials from "@/pages/Materials";
 import AreaTrail from "@/pages/AreaTrail";
 import SectorTrail from "@/pages/SectorTrail";
 import ISO9001 from "@/pages/ISO9001";
+import AuthorMethods from "@/pages/AuthorMethods";
+import About from "@/pages/About";
+import AreasList from "@/pages/AreasList";
+import SectorsList from "@/pages/SectorsList";
 import PageNotFound from "@/lib/PageNotFound";
 
 export default function App() {
@@ -28,8 +32,12 @@ export default function App() {
             <Route path="/tema/:id" element={<ThemeDetail />} />
             <Route path="/area/:areaId" element={<AreaTrail />} />
             <Route path="/setor/:sectorId" element={<SectorTrail />} />
+            <Route path="/areas" element={<AreasList />} />
+            <Route path="/setores" element={<SectorsList />} />
             <Route path="/iso" element={<ISO9001 />} />
             <Route path="/acervo" element={<Materials />} />
+            <Route path="/metodos-autorais" element={<AuthorMethods />} />
+            <Route path="/sobre" element={<About />} />
 
             {/* Rotas administrativas/auth temporariamente redirecionadas até o novo backend */}
             <Route path="/login" element={<Navigate to="/" replace />} />
