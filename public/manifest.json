@@ -3,7 +3,7 @@
   "name": "QualiPédia - Enciclopédia de Gestão da Qualidade",
   "icons": [
     {
-      "src": "https://base44.com/logo_v2.svg",
+      "src": "/qualipedia-mark.svg",
       "type": "image/svg+xml",
       "sizes": "192x192 512x512"
     }
