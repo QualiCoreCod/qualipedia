@@ -32,12 +32,19 @@ export default function Home() {
       dataService.listQualityThemes(),
       dataService.listMaterials(),
       dataService.listDecisionGuides(),
-    ]).then(([t, m, g]) => {
-      setThemes(t || []);
-      setMaterials(m || []);
-      setGuides(g || []);
-      setLoading(false);
-    });
+    ])
+      .then(([t, m, g]) => {
+        setThemes(t || []);
+        setMaterials(m || []);
+        setGuides(g || []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setThemes([]);
+        setMaterials([]);
+        setGuides([]);
+        setLoading(false);
+      });
   }, []);
 
   const findThemeByTool = (toolName) => {

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Outlet, NavLink, useLocation, Link } from "react-router-dom";
-import { useAuth } from "@/lib/AuthContext";
-import { Menu, X, LogIn, LogOut } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Footer from "@/components/Footer";
 
 const navItems = [
@@ -9,9 +8,7 @@ const navItems = [
   { to: "/decisao", label: "Qual ferramenta usar?" },
   { to: "/enciclopedia", label: "Enciclopédia" },
   { to: "/iso", label: "ISO 9001" },
-  { to: "/enciclopedia", label: "Metodologias" },
   { to: "/acervo", label: "Acervo" },
-  { to: "/adicionar", label: "Área privada" },
 ];
 
 function Monogram({ className }) {
@@ -24,7 +21,6 @@ function Monogram({ className }) {
 
 export default function Layout() {
   const location = useLocation();
-  const { isAuthenticated, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -40,7 +36,7 @@ export default function Layout() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-0.5">
+            <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
                 <NavLink
                   key={item.label}
@@ -59,26 +55,12 @@ export default function Layout() {
               ))}
             </nav>
 
-            {/* Auth + Mobile toggle */}
+            {/* Mobile toggle */}
             <div className="flex items-center gap-3">
-              {isAuthenticated ? (
-                <button
-                  onClick={() => logout()}
-                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <LogOut className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Sair</span>
-                </button>
-              ) : (
-                <Link
-                  to="/login"
-                  className="flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
-                >
-                  <LogIn className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Entrar</span>
-                </Link>
-              )}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="lg:hidden p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Abrir menu"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>

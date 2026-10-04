@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { dataService } from "@/services/dataService";
-import { BookOpen, Search, Plus, ArrowRight } from "lucide-react";
-import { useAuth } from "@/lib/AuthContext";
+import { BookOpen, Search, ArrowRight } from "lucide-react";
 
 const CATEGORIES = ["Metodologia", "Norma", "Ferramenta", "Indicador", "Processo", "Conceito"];
 
 export default function Encyclopedia() {
-  const { isAuthenticated } = useAuth();
   const [themes, setThemes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
@@ -38,11 +36,6 @@ export default function Encyclopedia() {
           <h1 className="font-heading text-3xl md:text-4xl font-semibold tracking-tight mb-2">Temas de qualidade</h1>
           <p className="text-muted-foreground">Fichas completas: conceito, como aplicar, exemplos e onde já usei.</p>
         </div>
-        {isAuthenticated && (
-          <Link to="/adicionar" className="shrink-0 inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-medium hover:opacity-90">
-            <Plus className="h-4 w-4" /> Novo tema
-          </Link>
-        )}
       </div>
 
       <div className="relative mb-5">

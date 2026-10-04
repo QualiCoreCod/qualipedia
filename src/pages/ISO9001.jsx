@@ -36,13 +36,8 @@ const CERT_STEPS = [
 const CLAUSE_OPTIONS = ["Geral", "Contexto", "Liderança", "Planejamento", "Apoio", "Operação", "Avaliação de desempenho", "Melhoria"];
 
 export default function ISO9001() {
-  const { isAuthenticated } = useAuth();
   const [docs, setDocs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [newDoc, setNewDoc] = useState({ title: "", description: "", file_url: "", clause: "Geral" });
-  const [uploading, setUploading] = useState(false);
-  const [saving, setSaving] = useState(false);
 
   const load = () =>
     dataService.listIsoDocuments().then((d) => {
@@ -53,37 +48,6 @@ export default function ISO9001() {
   useEffect(() => {
     load().catch(() => setLoading(false));
   }, []);
-
-  const handleFile = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const { file_url } = { file_url: "" };
-      setNewDoc((d) => ({ ...d, file_url, title: d.title || file.name }));
-    } finally {
-      setUploading(false);
-      e.target.value = "";
-    }
-  };
-
-  const submit = async (e) => {
-    e.preventDefault();
-    setSaving(true);
-    try {
-      /* create mocked */
-      setNewDoc({ title: "", description: "", file_url: "", clause: "Geral" });
-      setShowForm(false);
-      await load();
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const remove = async (id) => {
-    /* delete mocked */
-    load();
-  };
 
   return (
     <div className="max-w-4xl mx-auto px-6 md:px-10 py-12 md:py-16">
@@ -193,87 +157,7 @@ export default function ISO9001() {
             <h2 className="font-heading text-xl font-semibold tracking-tight mb-1">Documentos da ISO</h2>
             <p className="text-sm text-muted-foreground">Manual da qualidade, procedimentos e anexos</p>
           </div>
-          {isAuthenticated && (
-            <button
-              onClick={() => setShowForm((s) => !s)}
-              className="shrink-0 inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
-            >
-              <Upload className="h-4 w-4" /> Anexar documento
-            </button>
-          )}
         </div>
-
-        {showForm && (
-          <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-6 mb-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="font-heading font-semibold">Novo documento</h3>
-              <button type="button" onClick={() => setShowForm(false)} className="text-muted-foreground hover:text-foreground">
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Título *</label>
-                <input
-                  required
-                  value={newDoc.title}
-                  onChange={(e) => setNewDoc({ ...newDoc, title: e.target.value })}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
-                  placeholder="Ex.: Manual da Qualidade"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Cláusula relacionada</label>
-                <select
-                  value={newDoc.clause}
-                  onChange={(e) => setNewDoc({ ...newDoc, clause: e.target.value })}
-                  className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
-                >
-                  {CLAUSE_OPTIONS.map((c) => <option key={c} value={c}>{c}</option>)}
-                </select>
-              </div>
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-1.5 block">Descrição</label>
-              <textarea
-                value={newDoc.description}
-                onChange={(e) => setNewDoc({ ...newDoc, description: e.target.value })}
-                rows={2}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-1.5 block">Arquivo</label>
-              {newDoc.file_url ? (
-                <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-accent/40 px-3 py-2">
-                  <span className="flex items-center gap-2 text-sm min-w-0">
-                    <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
-                    <span className="truncate">{newDoc.title || "Documento"}</span>
-                  </span>
-                  <button type="button" onClick={() => setNewDoc({ ...newDoc, file_url: "" })} className="text-muted-foreground hover:text-destructive shrink-0">
-                    <X className="h-4 w-4" />
-                  </button>
-                </div>
-              ) : (
-                <label className="inline-flex items-center gap-2 rounded-lg border border-dashed border-border px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:border-primary/40 cursor-pointer transition-colors">
-                  {uploading ? (
-                    <><Loader2 className="h-4 w-4 animate-spin" /> Enviando...</>
-                  ) : (
-                    <><Upload className="h-4 w-4" /> Selecionar arquivo (PDF, DOCX, XLSX)</>
-                  )}
-                  <input type="file" className="hidden" onChange={handleFile} accept=".pdf,.docx,.xlsx,.doc,.xls,.pptx,.ppt,.txt,.csv" disabled={uploading} />
-                </label>
-              )}
-            </div>
-            <button
-              type="submit"
-              disabled={saving || !newDoc.file_url}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50"
-            >
-              {saving ? "Salvando..." : "Salvar documento"}
-            </button>
-          </form>
-        )}
 
         {loading ? (
           <div className="text-muted-foreground">Carregando documentos...</div>
@@ -281,7 +165,6 @@ export default function ISO9001() {
           <div className="rounded-2xl border border-dashed border-border p-10 text-center">
             <FileText className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
             <p className="text-muted-foreground">Nenhum documento anexado ainda.</p>
-            {isAuthenticated && <p className="text-sm text-muted-foreground mt-1">Clique em "Anexar documento" para começar.</p>}
           </div>
         ) : (
           <div className="space-y-3">
@@ -297,11 +180,6 @@ export default function ISO9001() {
                 <div className="flex items-center gap-2 shrink-0">
                   {d.clause && d.clause !== "Geral" && (
                     <span className="text-[10px] uppercase tracking-wide text-muted-foreground border border-border rounded-full px-2 py-0.5">{d.clause}</span>
-                  )}
-                  {isAuthenticated && (
-                    <button onClick={() => remove(d.id)} className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity">
-                      <Trash2 className="h-4 w-4" />
-                    </button>
                   )}
                 </div>
               </div>
