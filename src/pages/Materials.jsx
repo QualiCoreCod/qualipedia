@@ -140,9 +140,9 @@ export default function Materials() {
       {/* 3. Metodologia de qualidade criada */}
       <AcervoSection id="metodologia" num="3" title="Metodologia Autoral de Atendimento">
         <p className="text-[15px] leading-relaxed mb-4">
-          Metodologia desenvolvida por <strong>Bruna Silva Ramos</strong> (Goiânia - GO) para estruturar a qualidade no atendimento ao cliente, articulada em quatro eixos complementares:
+          Metodologia desenvolvida por <strong>Bruna Silva Ramos</strong> (Goiânia - GO) para atendimento ao cliente e suporte operacional, estruturada em avaliação mensal combinada de indicadores técnicos, experiência percebida, gestão de riscos operacionais e reconhecimento:
         </p>
-        <div className="grid md:grid-cols-2 gap-3">
+        <div className="grid md:grid-cols-2 gap-3 mb-4">
           {METHODOLOGY_AXES.map((axis) => (
             <div key={axis.label} className="p-4 rounded-xl border border-border bg-card">
               <h4 className="font-heading font-semibold text-sm text-foreground mb-1">{axis.label}</h4>
@@ -150,9 +150,14 @@ export default function Materials() {
             </div>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
-          QA e IEPC produzem avaliações complementares. Não conformidades podem gerar deduções conforme regras metodológicas padronizadas, enquanto elogios reconhecem comportamentos e entregas positivas.
-        </p>
+        <div className="rounded-xl border border-border bg-accent/20 p-4 text-xs text-muted-foreground leading-relaxed space-y-1.5">
+          <p>
+            <strong>Como funciona na prática operacional:</strong> A avaliação técnica mensal (QA — até 100 pontos) e o Índice de Experiência do Cliente (IEPC — até 100 pontos) produzem diagnósticos complementares. Em todas as amostras analisadas no mês, verificam-se os riscos do setor através de Não Conformidades tratadas formalmente, além dos elogios recebidos.
+          </p>
+          <p>
+            Esses indicadores geram pontuação para a <strong>gamificação</strong> da equipe e sustentam <strong>feedbacks presenciais</strong> estruturados, com entrega de relatório detalhado (critérios aderidos, não aderidos, pontos de melhoria, evolução técnica, comportamental, dicas de comunicação e PDI), com acompanhamento contínuo mês a mês.
+          </p>
+        </div>
       </AcervoSection>
 
       {/* 4. Sistema de avaliação de qualidade (QA) */}

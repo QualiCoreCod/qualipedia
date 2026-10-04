@@ -17,45 +17,46 @@ import {
 export default function AuthorMethods() {
   const METHODOLOGY_AXES = [
     {
-      title: "Qualidade Técnica — QA",
-      badge: "Avaliação Operacional",
+      title: "Indicador Técnico — QA (0 a 100)",
+      badge: "Avaliação Técnica Mensal",
       icon: ShieldCheck,
-      color: "text-blue-600 bg-blue-50 border-blue-200",
-      desc: "Avaliação técnica manual e calibrada, estruturada em cinco pilares fundamentais e critérios objetivos para aferição da conformidade operacional."
+      color: "text-blue-700 bg-blue-50 border-blue-200",
+      desc: "Avaliação técnica mensal estruturada em cinco pilares (comunicação, aspectos técnicos, ferramentas e processos operacionais), compondo nota de 0 a 100 pontos."
     },
     {
-      title: "Experiência do Cliente — IEPC",
+      title: "Índice de Experiência do Cliente — IEPC (0 a 100)",
       badge: "Percepção do Usuário",
       icon: HeartHandshake,
-      color: "text-emerald-600 bg-emerald-50 border-emerald-200",
-      desc: "Eixo complementar voltado a mensurar a experiência percebida pelo cliente durante o atendimento, avaliando esforço, clareza e resolutividade."
+      color: "text-emerald-700 bg-emerald-50 border-emerald-200",
+      desc: "Medição mensal da percepção e facilidade do cliente na interação, apurada em conjunto com a avaliação técnica, também variando de 0 a 100 pontos."
     },
     {
       title: "Gestão de Não Conformidades",
-      badge: "Controle de Desvios",
+      badge: "Riscos do Setor",
       icon: AlertTriangle,
-      color: "text-amber-600 bg-amber-50 border-amber-200",
-      desc: "Identificação e tratamento formal de desvios operacionais. Não conformidades geram deduções pontuais conforme regras metodológicas padronizadas."
+      color: "text-amber-700 bg-amber-50 border-amber-200",
+      desc: "Verificação dos riscos do setor em todas as amostras analisadas durante o mês, com identificação, registro e tratativa formal dos desvios."
     },
     {
-      title: "Reconhecimento por Elogios",
-      badge: "Valor Positivo",
+      title: "Registro de Elogios do Ciclo",
+      badge: "Reconhecimento Positivo",
       icon: Sparkles,
-      color: "text-purple-600 bg-purple-50 border-purple-200",
-      desc: "Registro formal que reconhece comportamentos exemplares, cordialidade diferenciada e entregas positivas percebidas pelo cliente ou pela liderança."
+      color: "text-purple-700 bg-purple-50 border-purple-200",
+      desc: "Reconhecimento formal de elogios, entregas positivas e condutas de destaque observadas nas interações do ciclo."
     }
   ];
 
   const APPLICATION_SUPPORT = [
-    "Feedback estruturado e nivelamento técnico contínuo",
-    "Acompanhamento da evolução técnica individual e da equipe",
-    "Identificação clara de pontos fortes e competências consolidadas",
-    "Mapeamento de oportunidades de desenvolvimento profissional",
-    "Construção de Planos de Desenvolvimento Individual (PDI) direcionados",
-    "Diagnóstico da saúde operacional e do clima do suporte",
-    "Identificação antecipada de riscos de processo",
-    "Execução de ações preventivas e mitigatórias",
-    "Sustentação da cultura prática de melhoria contínua"
+    "Pontuação consolidada para alimentar a gamificação da equipe",
+    "Feedbacks presenciais estruturados e humanizados",
+    "Envio de relatório formal com instruções detalhadas do que foi avaliado",
+    "Mapeamento claro de critérios aderidos e critérios não aderidos",
+    "Identificação de pontos de melhoria com foco formativo",
+    "Acompanhamento da evolução técnica da pessoa",
+    "Acompanhamento da evolução comportamental",
+    "Dicas práticas e orientações de comunicação",
+    "Construção e acompanhamento contínuo do PDI (Plano de Desenvolvimento Individual)",
+    "Acompanhamento mês a mês ou ciclo a ciclo da saúde do setor"
   ];
 
   const QA_PILLARS = [
@@ -119,13 +120,18 @@ export default function AuthorMethods() {
             Metodologia para Qualidade em Atendimento e Suporte ao Cliente
           </h1>
           <p className="text-slate-600 text-lg md:text-xl max-w-4xl leading-relaxed mb-6">
-            Um sistema estruturado de governança, monitoria analítica e melhoria contínua, projetado para orientar equipes de atendimento operacional por meio de critérios claros, avaliação balanceada e acompanhamento formativo.
+            Metodologia desenvolvida para atendimento ao cliente e suporte operacional, estruturada em avaliação mensal combinada de indicadores técnicos, experiência percebida, gestão de riscos operacionais e reconhecimento.
           </p>
-          <div className="rounded-2xl bg-slate-50 border-2 border-slate-200 p-5 md:p-6 text-sm text-slate-700 leading-relaxed">
-            <strong className="block text-slate-900 font-heading mb-1 text-base">
-              Relação metodológica entre os eixos:
-            </strong>
-            QA e IEPC produzem avaliações complementares. Não conformidades podem gerar deduções conforme regras metodológicas padronizadas, enquanto elogios reconhecem comportamentos e entregas positivas da equipe.
+          <div className="rounded-2xl bg-slate-50 border-2 border-slate-200 p-5 md:p-6 text-sm text-slate-700 leading-relaxed space-y-2">
+            <div>
+              <strong className="block text-slate-900 font-heading mb-1 text-base">
+                Como os indicadores funcionam em conjunto:
+              </strong>
+              A avaliação técnica mensal (QA — até 100 pontos) e o Índice de Experiência do Cliente (IEPC — até 100 pontos) produzem diagnósticos complementares. Em todas as amostras do mês, verificam-se os riscos do setor através de Não Conformidades identificadas, registradas e tratadas, além do cômputo dos elogios recebidos no ciclo.
+            </div>
+            <div className="pt-2 border-t border-slate-200/80 text-xs text-slate-600">
+              Esses dados alimentam a <strong>pontuação para gamificação</strong> da equipe e sustentam <strong>feedbacks presenciais</strong> com relatório detalhado (critérios aderidos, não aderidos, evolução técnica, comportamental, dicas de comunicação e PDI), acompanhado mês a mês.
+            </div>
           </div>
         </div>
 

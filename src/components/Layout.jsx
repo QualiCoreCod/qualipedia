@@ -52,9 +52,9 @@ export default function Layout() {
       {/* Barra de Notificação Institucional Superior */}
       <div className="bg-petroleo text-slate-100 text-xs py-2 px-4 border-b border-petroleo/20 font-medium">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>QualiPédia — Enciclopédia Digital Pública de Gestão da Qualidade</span>
+          <div className="flex items-center gap-2 min-w-0 overflow-hidden">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+            <span className="truncate">QualiPédia — Enciclopédia Digital Pública de Gestão da Qualidade</span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-slate-200">
             <span>{totalThemes} Temas Documentados</span>
@@ -67,17 +67,17 @@ export default function Layout() {
       </div>
 
       {/* Header Principal do Sistema */}
-      <header className="sticky top-0 z-40 bg-white border-b-2 border-slate-200 shadow-sm">
+      <header className="sticky top-0 z-40 bg-white border-b border-slate-200/80 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18 py-3 gap-4">
-            {/* Logo com Monograma Robusto */}
+            {/* Logo com Monograma Robusto à esquerda */}
             <Link to="/" className="flex items-center gap-3 shrink-0 group">
-              <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-petroleo text-white font-heading font-extrabold text-lg shadow-sm group-hover:bg-destaque transition-colors">
+              <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-petroleo text-white font-heading font-extrabold text-lg shadow-sm group-hover:bg-slate-800 transition-colors">
                 Q
               </div>
               <div className="flex flex-col">
                 <span className="font-heading font-extrabold tracking-tight text-xl text-slate-900 leading-none">
-                  Quali<span className="text-destaque">Pédia</span>
+                  Quali<span className="text-petroleo">Pédia</span>
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500 mt-1">
                   Gestão da Qualidade
@@ -85,20 +85,8 @@ export default function Layout() {
               </div>
             </Link>
 
-            {/* Campo de Busca Visível no Cabeçalho */}
-            <form onSubmit={handleHeaderSearch} className="hidden md:flex flex-1 max-w-xs xl:max-w-sm relative">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
-              <input
-                type="text"
-                value={headerSearch}
-                onChange={(e) => setHeaderSearch(e.target.value)}
-                placeholder="Pesquisar ferramenta, norma, ISO..."
-                className="w-full h-10 rounded-xl border-2 border-slate-200 bg-slate-50 pl-10 pr-4 text-xs text-slate-800 placeholder:text-slate-400 outline-none transition-all focus:border-destaque focus:bg-white focus:ring-2 focus:ring-destaque/10"
-              />
-            </form>
-
-            {/* Navegação Desktop */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {/* Navegação Desktop CENTRALIZADA NO MEIO */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 mx-auto">
               {/* Início */}
               <NavLink
                 to="/"
@@ -106,8 +94,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`
                 }
               >
@@ -121,9 +109,9 @@ export default function Layout() {
                   onClick={() => setExploreOpen(!exploreOpen)}
                   className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isExploreActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-                  }`}
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  }` }
                   aria-expanded={exploreOpen}
                 >
                   <span>Explorar</span>
@@ -132,7 +120,7 @@ export default function Layout() {
 
                 {/* Painel do Dropdown Explorar */}
                 {exploreOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-80 rounded-2xl border-2 border-slate-200 bg-white p-4 shadow-xl z-50 animate-in fade-in zoom-in-95 duration-150">
+                  <div className="absolute top-full left-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl z-50 animate-in fade-in zoom-in-95 duration-150">
                     <div className="space-y-4">
                       <div>
                         <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 mb-1.5">
@@ -150,7 +138,7 @@ export default function Layout() {
                             <Link
                               key={item.label}
                               to={item.to}
-                              className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-destaque transition-colors"
+                              className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-petroleo transition-colors"
                             >
                               <span>{item.label}</span>
                               <ArrowRight className="h-3 w-3 text-slate-400" />
@@ -166,14 +154,14 @@ export default function Layout() {
                         <div className="space-y-0.5">
                           <Link
                             to="/areas"
-                            className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-destaque transition-colors"
+                            className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-petroleo transition-colors"
                           >
                             <span>Trilhas por Área de Atuação</span>
                             <ArrowRight className="h-3 w-3 text-slate-400" />
                           </Link>
                           <Link
                             to="/setores"
-                            className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-destaque transition-colors"
+                            className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-petroleo transition-colors"
                           >
                             <span>Trilhas por Setor Econômico</span>
                             <ArrowRight className="h-3 w-3 text-slate-400" />
@@ -191,8 +179,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`
                 }
               >
@@ -205,8 +193,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`
                 }
               >
@@ -219,8 +207,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`
                 }
               >
@@ -233,8 +221,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-slate-900 text-white shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                      ? "text-petroleo bg-slate-100/90 font-bold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`
                 }
               >
@@ -242,12 +230,24 @@ export default function Layout() {
               </NavLink>
             </nav>
 
-            {/* Botão Mobile */}
-            <div className="flex items-center gap-2 lg:hidden">
+            {/* Ações / Busca à Direita */}
+            <div className="flex items-center gap-3 shrink-0">
+              <form onSubmit={handleHeaderSearch} className="hidden md:flex relative w-44 xl:w-56">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+                <input
+                  type="text"
+                  value={headerSearch}
+                  onChange={(e) => setHeaderSearch(e.target.value)}
+                  placeholder="Pesquisar..."
+                  className="w-full h-9 rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-xs text-slate-800 placeholder:text-slate-400 outline-none transition-all focus:border-petroleo focus:bg-white focus:ring-1 focus:ring-petroleo/20"
+                />
+              </form>
+
+              {/* Botão Mobile */}
               <button
                 type="button"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="p-2.5 rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors"
+                className="lg:hidden p-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors"
                 aria-label="Abrir menu"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

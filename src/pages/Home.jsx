@@ -255,54 +255,100 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col">
       {/* ========================================================= */}
-      {/* SEÇÃO A: Cabeçalho e Apresentação (Hero Institucional) */}
+      {/* SEÇÃO A: Cabeçalho e Apresentação (Hero Centralizado com Marca) */}
       {/* ========================================================= */}
-      <section className="w-full bg-slate-900 text-white border-b-2 border-slate-800 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            {/* Tag Institucional */}
-            <div className="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 text-slate-300 rounded-lg px-3 py-1.5 text-xs font-bold uppercase tracking-wider mb-6">
-              <span className="h-2 w-2 rounded-full bg-blue-400" />
-              Enciclopédia Digital Pública da Gestão da Qualidade
-            </div>
+      <section className="w-full bg-gradient-to-b from-[#F5F7FA] via-white to-slate-50 border-b border-slate-200 py-16 md:py-24 text-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Badge Suave */}
+          <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 text-slate-700 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            Enciclopédia Digital Pública de Gestão da Qualidade
+          </div>
 
-            {/* Título Principal Conforme Requisito A */}
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-              Conhecimento em qualidade para <span className="text-blue-400">entender</span>, <span className="text-blue-400">decidir</span> e <span className="text-blue-400">aplicar</span>.
-            </h1>
+          {/* O NOME QUALIPÉDIA EM GRANDE DESTAQUE CENTRAL */}
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-3">
+            Quali<span className="text-petroleo">Pédia</span>
+          </h1>
 
-            {/* Texto Descritivo Conforme Requisito A */}
-            <p className="text-slate-300 text-lg sm:text-xl md:text-2xl leading-relaxed mb-10 max-w-3xl">
-              Explore ferramentas, normas, métodos, indicadores e exemplos práticos organizados em uma única enciclopédia digital.
-            </p>
+          {/* Subtítulo da Identidade Oficial */}
+          <p className="text-xl sm:text-2xl font-bold text-petroleo mb-3">
+            Sua enciclopédia de gestão da qualidade.
+          </p>
 
-            {/* Três Ações Principais Conforme Requisito A */}
-            <div className="flex flex-wrap items-center gap-4">
+          {/* Frase Editorial e Apresentação */}
+          <p className="text-lg sm:text-xl font-medium text-slate-800 max-w-3xl mx-auto mb-2">
+            Conhecimento em qualidade para entender, decidir e aplicar.
+          </p>
+
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8">
+            Explore ferramentas, normas, métodos, indicadores e exemplos práticos organizados em uma única enciclopédia digital.
+          </p>
+
+          {/* Campo de Busca Rápida no Centro */}
+          <div className="max-w-2xl mx-auto rounded-2xl bg-white border border-slate-200 shadow-sm p-3.5 mb-8">
+            <form onSubmit={handleSearchSubmit} className="relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Descreva uma situação, problema, área ou ferramenta (ex.: Ishikawa, PDCA, 5W2H)..."
+                className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 pl-11 pr-24 text-sm text-slate-900 outline-none focus:border-petroleo focus:bg-white focus:ring-1 focus:ring-petroleo/20"
+              />
               <button
-                type="button"
-                onClick={focusSearch}
-                className="inline-flex items-center gap-2.5 rounded-xl bg-destaque text-white px-6 py-4 text-base font-bold shadow-lg hover:bg-blue-600 transition-all cursor-pointer"
+                type="submit"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 h-9 px-4 rounded-lg bg-petroleo text-white text-xs font-bold hover:bg-slate-800 transition-colors"
               >
-                <Search className="h-5 w-5" />
-                <span>Pesquisar na QualiPédia</span>
+                Buscar
               </button>
+            </form>
 
-              <Link
-                to="/decisao"
-                className="inline-flex items-center gap-2.5 rounded-xl bg-slate-800 text-white border-2 border-slate-700 px-6 py-4 text-base font-bold hover:bg-slate-700 transition-all"
-              >
-                <Compass className="h-5 w-5 text-blue-400" />
-                <span>Encontrar uma ferramenta</span>
-              </Link>
-
-              <Link
-                to="/enciclopedia"
-                className="inline-flex items-center gap-2.5 rounded-xl bg-transparent text-slate-300 hover:text-white px-5 py-4 text-base font-bold hover:underline transition-all"
-              >
-                <span>Explorar a enciclopédia</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            {/* Chips de atalhos rápidos */}
+            <div className="flex flex-wrap gap-1.5 justify-center mt-2.5 pt-2.5 border-t border-slate-100">
+              <span className="text-[11px] text-slate-400 font-semibold self-center mr-1">Exemplos:</span>
+              {["Ishikawa", "PDCA", "Matriz GUT", "Atendimento e Suporte", "ISO 9001", "Não Conformidades"].map((chip) => (
+                <button
+                  key={chip}
+                  type="button"
+                  onClick={() => {
+                    setQuery(chip);
+                    navigate(`/enciclopedia?q=${encodeURIComponent(chip)}`);
+                  }}
+                  className="text-[11px] text-slate-600 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 rounded-full px-2.5 py-0.5 transition-colors font-medium"
+                >
+                  {chip}
+                </button>
+              ))}
             </div>
+          </div>
+
+          {/* Três Ações Principais Conforme Requisito A */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={focusSearch}
+              className="inline-flex items-center gap-2 rounded-xl bg-petroleo text-white px-5 py-3 text-sm font-bold shadow-xs hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              <Search className="h-4 w-4" />
+              <span>Pesquisar na QualiPédia</span>
+            </button>
+
+            <Link
+              to="/decisao"
+              className="inline-flex items-center gap-2 rounded-xl bg-white text-slate-800 border border-slate-300 px-5 py-3 text-sm font-bold hover:bg-slate-50 transition-all shadow-xs"
+            >
+              <Compass className="h-4 w-4 text-petroleo" />
+              <span>Encontrar uma ferramenta</span>
+            </Link>
+
+            <Link
+              to="/enciclopedia"
+              className="inline-flex items-center gap-2 rounded-xl bg-transparent text-slate-700 hover:text-slate-900 px-4 py-3 text-sm font-bold hover:underline transition-all"
+            >
+              <span>Explorar a enciclopédia</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -637,59 +683,119 @@ export default function Home() {
       {/* ========================================================= */}
       {/* SEÇÃO F: Métodos Autorais (Bruna Silva Ramos) */}
       {/* ========================================================= */}
-      <section className="w-full bg-slate-900 text-white border-b-2 border-slate-800 py-16 md:py-24">
+      <section className="w-full bg-slate-50/80 border-b border-slate-200 py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border-2 border-slate-700 bg-slate-800/80 p-8 md:p-14 shadow-xl">
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 text-blue-300 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                  <Award className="h-4 w-4" /> Métodos Autorais de Gestão da Qualidade
-                </div>
+          <div className="rounded-3xl border-2 border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+            <div className="max-w-4xl mb-8">
+              <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-petroleo rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4">
+                <Award className="h-4 w-4" /> Métodos Autorais • Bruna Silva Ramos (Goiânia - GO)
+              </div>
 
-                <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                  Metodologia para Qualidade em Atendimento e Suporte ao Cliente
-                </h2>
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+                Metodologia para Qualidade em Atendimento e Suporte ao Cliente
+              </h2>
 
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                  Desenvolvida por <strong>Bruna Silva Ramos</strong> (Goiânia - GO), esta metodologia consolida a governança operacional em quatro eixos complementares: <strong>Qualidade técnica (QA)</strong>, <strong>Experiência percebida pelo cliente (IEPC)</strong>, <strong>Não conformidades</strong> e <strong>Elogios</strong>.
-                </p>
+              <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                Desenvolvida por <strong>Bruna Silva Ramos</strong>, esta metodologia consolida um sistema prático de governança e monitoria operacional para equipes de atendimento e suporte, articulado em quatro indicadores e acompanhamento por ciclo mensal:
+              </p>
+            </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  QA e IEPC produzem avaliações complementares. Não conformidades podem gerar deduções conforme regras metodológicas, enquanto elogios reconhecem comportamentos e entregas positivas.
-                </p>
-
-                <div className="grid sm:grid-cols-3 gap-3 pt-2">
-                  <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-blue-400 font-heading">QA</span>
-                    <span className="text-xs text-slate-400">QA estruturado em cinco pilares e critérios de avaliação</span>
-                  </div>
-                  <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-emerald-400 font-heading">4 Eixos</span>
-                    <span className="text-xs text-slate-400">QA, IEPC, Não Conformidades e Elogios</span>
-                  </div>
-                  <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-white font-heading">Melhoria Contínua</span>
-                    <span className="text-xs text-slate-400">Feedback estruturado, PDI e ações preventivas</span>
-                  </div>
+            {/* Os 4 Indicadores da Metodologia */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-petroleo block mb-1">
+                    Indicador Técnico (0–100)
+                  </span>
+                  <h3 className="font-heading font-bold text-slate-900 text-base mb-2">
+                    Avaliação Técnica QA
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Avaliação mensal estruturada em cinco pilares (comunicação, aspectos técnicos, ferramentas e processos operacionais), compondo nota até 100 pontos.
+                  </p>
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col gap-3">
-                <Link
-                  to="/metodos-autorais"
-                  className="w-full rounded-xl bg-destaque text-white py-4 px-6 text-center text-sm font-bold shadow-md hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>Conhecer Metodologia Completa</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-
-                <Link
-                  to="/acervo"
-                  className="w-full rounded-xl bg-slate-700/80 text-white border border-slate-600 py-3.5 px-6 text-center text-sm font-bold hover:bg-slate-700 transition-colors"
-                >
-                  Consultar Modelos no Acervo
-                </Link>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
+                    Experiência do Cliente (0–100)
+                  </span>
+                  <h3 className="font-heading font-bold text-slate-900 text-base mb-2">
+                    Índice IEPC
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Medição mensal da percepção e facilidade do cliente na interação, apurada em conjunto com a avaliação técnica (nota até 100 pontos).
+                  </p>
+                </div>
               </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-700 block mb-1">
+                    Riscos do Setor
+                  </span>
+                  <h3 className="font-heading font-bold text-slate-900 text-base mb-2">
+                    Não Conformidades
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Verificação e tratamento formal de riscos do setor mapeados em todas as amostras analisadas durante o mês.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-purple-700 block mb-1">
+                    Reconhecimento
+                  </span>
+                  <h3 className="font-heading font-bold text-slate-900 text-base mb-2">
+                    Elogios do Ciclo
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Registro formal de elogios, entregas positivas e condutas de destaque reconhecidas no atendimento.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Como o sistema funciona na prática (Gamificação, Feedback, PDI) */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6 mb-8">
+              <h4 className="font-heading font-bold text-slate-900 text-sm mb-3">
+                Para que serve na prática operacional:
+              </h4>
+              <div className="grid sm:grid-cols-3 gap-4 text-xs text-slate-700">
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                  <strong className="block text-slate-900 font-semibold mb-1 text-sm">Pontuação e Gamificação</strong>
+                  Os indicadores alimentam ranking e pontuação motivacional para desenvolvimento da equipe.
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                  <strong className="block text-slate-900 font-semibold mb-1 text-sm">Feedbacks Presenciais e PDI</strong>
+                  Relatório com critérios aderidos, não aderidos, evolução técnica, comportamental, comunicação e PDI.
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                  <strong className="block text-slate-900 font-semibold mb-1 text-sm">Acompanhamento Contínuo</strong>
+                  Monitoramento mês a mês ou ciclo a ciclo para garantir crescimento dos analistas e saúde do setor.
+                </div>
+              </div>
+            </div>
+
+            {/* Botões de Ação */}
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                to="/metodos-autorais"
+                className="rounded-xl bg-petroleo text-white py-3 px-5 text-sm font-bold shadow-xs hover:bg-slate-800 transition-colors inline-flex items-center gap-2"
+              >
+                <span>Conhecer Metodologia Completa</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              <Link
+                to="/acervo"
+                className="rounded-xl bg-white text-slate-800 border border-slate-300 py-3 px-5 text-sm font-bold hover:bg-slate-50 transition-colors"
+              >
+                Consultar Modelos no Acervo
+              </Link>
             </div>
           </div>
         </div>
