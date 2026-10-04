@@ -3,7 +3,11 @@ import { Outlet, NavLink, useLocation, useNavigate, Link } from "react-router-do
 import { Search, ChevronDown, Menu, X, ArrowRight, BookOpen, Compass, Award, FolderOpen, User, Layers, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
 
+import { mockData } from "@/data/mockData";
+
 export default function Layout() {
+  const totalThemes = (mockData.QualityTheme || []).length;
+  const totalGuides = (mockData.DecisionGuide || []).length;
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -53,11 +57,11 @@ export default function Layout() {
             <span>QualiPédia — Enciclopédia Digital Pública de Gestão da Qualidade</span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-slate-200">
-            <span>53 Temas Documentados</span>
+            <span>{totalThemes} Temas Documentados</span>
             <span className="opacity-40">|</span>
-            <span>20 Guias de Decisão</span>
+            <span>{totalGuides} Guias de Decisão</span>
             <span className="opacity-40">|</span>
-            <span className="text-white font-semibold">100% Aberto e Gratuito</span>
+            <span className="text-white font-semibold">Conhecimento público, organizado e acessível</span>
           </div>
         </div>
       </div>

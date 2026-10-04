@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, ShieldCheck, CheckCircle2, ArrowRight, Layers, Award, Target, FileText } from "lucide-react";
+import { BookOpen, ShieldCheck, ArrowRight, Layers, Award, Target, Info } from "lucide-react";
 
 export default function About() {
   return (
     <div className="w-full bg-slate-50 py-12 md:py-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Bloco de Apresentação */}
         <div className="rounded-3xl border-2 border-slate-200 bg-white p-8 md:p-14 shadow-sm mb-12">
           <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 text-slate-800 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4">
             <BookOpen className="h-4 w-4 text-destaque" /> Enciclopédia Digital Pública
@@ -14,11 +15,24 @@ export default function About() {
             Sobre a QualiPédia
           </h1>
           <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-6">
-            A <strong>QualiPédia</strong> é uma enciclopédia digital pública dedicada à Gestão da Qualidade. Seu propósito é centralizar ferramentas clássicas, metodologias consolidadas, normas técnicas internacionais e métodos autorais em uma plataforma aberta, estruturada e diretamente aplicável à prática operacional.
+            A <strong>QualiPédia</strong> é uma enciclopédia digital voltada à Gestão da Qualidade. Seu propósito é reunir conceitos, ferramentas, normas técnicas e métodos autorais em uma plataforma pública, estruturada e diretamente aplicável à prática operacional.
           </p>
           <p className="text-slate-600 text-base leading-relaxed">
-            Diferente de glossários acadêmicos teóricos ou conteúdos fragmentados, cada tema na QualiPédia é tratado como uma <strong>ficha técnica de trabalho</strong>: explicando a origem do conceito, quando utilizá-lo, o passo a passo de como aplicar, exemplos práticos e o nível de esforço requerido.
+            Diferente de glossários meramente teóricos ou materiais dispersos, cada tema na QualiPédia é tratado como uma <strong>ficha técnica de aplicação</strong>: contextualizando o conceito, orientando quando utilizar, detalhando o passo a passo metodológico e apresentando <strong>exemplos práticos e cenários fictícios de aplicação</strong>.
           </p>
+        </div>
+
+        {/* Nota Institucional de Escopo e Isenção */}
+        <div className="rounded-2xl border-2 border-slate-200 bg-blue-50/60 p-6 md:p-7 mb-12 flex items-start gap-4">
+          <Info className="h-5 w-5 text-destaque shrink-0 mt-0.5" />
+          <div className="text-sm text-slate-700 leading-relaxed space-y-1">
+            <strong className="block text-slate-900 font-semibold font-heading">
+              Natureza pedagógica e informativa
+            </strong>
+            <p>
+              A QualiPédia reúne pesquisa bibliográfica, referências técnicas consolidadas, curadoria técnica e cenários práticos de implementação. A plataforma possui finalidade pedagógica e de disseminação de conhecimento, não atuando como órgão certificador, entidade de acreditação ou autoridade normativa oficial.
+            </p>
+          </div>
         </div>
 
         {/* Pilares Editoriais */}
@@ -28,10 +42,10 @@ export default function About() {
               <ShieldCheck className="h-5 w-5" />
             </div>
             <h3 className="font-heading text-lg font-bold text-slate-900 mb-2">
-              Rigor Metodológico
+              Fundamentação Metodológica
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Conceitos fundamentados em padrões internacionais como ISO 9001:2015, diretrizes da ASQ (American Society for Quality) e referências da Toyota Production System (TPS).
+              Conteúdo embasado na literatura técnica da gestão da qualidade, nos princípios da ISO 9001:2015 e em metodologias consagradas de melhoria contínua e gestão por processos.
             </p>
           </div>
 
@@ -43,7 +57,7 @@ export default function About() {
               Orientação Prática
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Conteúdo formatado para resolver problemas cotidianos: retrabalho, lentidão em suporte, desvios operacionais, falta de indicadores e preparação para auditorias.
+              Estruturação voltada para apoiar na solução de problemas reais: retrabalho, desvios de processo, falta de indicadores e rotinas de acompanhamento da qualidade.
             </p>
           </div>
 
@@ -52,10 +66,10 @@ export default function About() {
               <Layers className="h-5 w-5" />
             </div>
             <h3 className="font-heading text-lg font-bold text-slate-900 mb-2">
-              Acesso Universal
+              Conhecimento Acessível
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Uma base de conhecimento 100% pública e gratuita para estudantes, analistas, auditores e líderes que buscam elevar a maturidade de suas operações.
+              Conhecimento público, organizado e acessível para estudantes, analistas, lideranças e profissionais que buscam elevar a maturidade técnica de seus processos.
             </p>
           </div>
         </div>
@@ -70,10 +84,10 @@ export default function About() {
               Pesquisa, Estruturação e Métodos Autorais
             </h2>
             <p className="text-slate-600 text-base leading-relaxed mb-4">
-              A QualiPédia foi concebida e organizada por <strong>Bruna Silva Ramos Sousa</strong>, profissional com atuação dedicada à gestão da qualidade, governança operacional e melhoria de processos em ambientes de atendimento, tecnologia e serviços.
+              A QualiPédia foi concebida e organizada por <strong>Bruna Silva Ramos</strong> (Goiânia - GO), profissional dedicada à gestão da qualidade, processos e governança operacional.
             </p>
             <p className="text-slate-600 text-base leading-relaxed mb-6">
-              Além de organizar as ferramentas e normas do acervo mundial, o projeto reúne métodos autorais criados a partir da vivência prática em operações complexas — como a metodologia de governança com os 5 pilares operacionais e o Índice IEPC para qualidade em suporte ao cliente.
+              Além de estruturar os conceitos e métodos clássicos da qualidade, a plataforma documenta métodos autorais desenvolvidos por Bruna Silva Ramos voltados ao atendimento e suporte ao cliente, articulados nos quatro eixos: <strong>Qualidade Técnica (QA)</strong>, <strong>Experiência Percebida pelo Cliente (IEPC)</strong>, <strong>Gestão de Não Conformidades</strong> e <strong>Elogios</strong>.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

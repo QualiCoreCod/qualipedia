@@ -66,7 +66,7 @@ export default function Encyclopedia() {
             Enciclopédia da Qualidade
           </h1>
           <p className="text-slate-600 text-base md:text-lg max-w-3xl leading-relaxed">
-            Consulte 53 fichas técnicas detalhadas com conceitos, contexto de aplicação, metodologia passo a passo, exemplos reais e referências bibliográficas.
+            Consulte {themes.length > 0 ? `${themes.length} ` : ""}fichas técnicas detalhadas com conceitos, contexto de aplicação, metodologia passo a passo, exemplos práticos e cenários fictícios de aplicação e referências bibliográficas.
           </p>
         </div>
 

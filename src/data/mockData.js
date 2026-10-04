@@ -161,7 +161,7 @@ export const mockData = {
       ],
       "title": "Six Sigma",
       "category": "Metodologia",
-      "where_i_used": "Possuo certificação Lean Six Sigma White Belt.",
+      "where_i_used": "Aplicação de conceitos Six Sigma e estrutura DMAIC na identificação e redução de variabilidade em processos operacionais.",
       "tags": [
         "six sigma",
         "variabilidade",
@@ -230,7 +230,7 @@ export const mockData = {
       ],
       "title": "Excelência Organizacional",
       "category": "Conceito",
-      "where_i_used": "Consolidação executiva dos ciclos de qualidade — meço não só a nota do mês, mas a evolução sustentada (QA 75,0→83,8 ao longo de 8 meses, não um pico isolado).",
+      "where_i_used": "Consolidação executiva dos ciclos de qualidade — acompanhamento da evolução sustentada e consistente ao longo dos ciclos, em vez de focar apenas em picos isolados.",
       "tags": [
         "excelência",
         "sustentabilidade",
@@ -496,7 +496,7 @@ export const mockData = {
       ],
       "title": "Eficiência x Eficácia",
       "category": "Conceito",
-      "where_i_used": "O pilar P2 (Gestão da Tratativa da Demanda) do meu QA mede eficácia (resolução real), enquanto indicadores de TMA medem eficiência — os dois lado a lado evitam otimizar velocidade às custas da resolução.",
+      "where_i_used": "O pilar P2 (Gestão da Tratativa da Demanda) da metodologia QA mede eficácia na resolução da demanda, enquanto indicadores de TMA medem eficiência operacional — a análise conjunta evita otimizar velocidade às custas da qualidade.",
       "tags": [
         "eficiência",
         "eficácia",
@@ -593,7 +593,7 @@ export const mockData = {
       ],
       "title": "Gestão do Conhecimento",
       "category": "Conceito",
-      "where_i_used": "A própria QualiPédia nasce desse princípio — documentar minha metodologia para que o conhecimento não fique só na minha memória.",
+      "where_i_used": "A própria QualiPédia é concebida sob esse princípio — estruturar e documentar métodos e ferramentas para garantir a preservação e disseminação do conhecimento técnico.",
       "tags": [
         "conhecimento",
         "documentação",
@@ -630,7 +630,7 @@ export const mockData = {
       ],
       "title": "O que é Qualidade (conceito completo)",
       "category": "Conceito",
-      "where_i_used": "Base conceitual de todos os critérios do meu sistema QA — cada pilar mede uma dessas características na prática.",
+      "where_i_used": "Base conceitual dos critérios do sistema de avaliação QA — cada pilar reflete dimensões da qualidade na prática.",
       "tags": [
         "conceito",
         "fundamento",
@@ -662,7 +662,7 @@ export const mockData = {
       ],
       "title": "Enfoque Sistêmico na Qualidade",
       "category": "Conceito",
-      "where_i_used": "Ao investigar não conformidades recorrentes, busco a causa raiz no fluxo completo do atendimento, não só no analista — é a base da minha calibragem e do procedimento PR-NC-001.",
+      "where_i_used": "Ao investigar desvios e não conformidades, a causa raiz deve ser investigada no fluxo sistêmico do processo, apoiando calibragens avaliativas e procedimentos de gestão de desvios.",
       "tags": [
         "sistêmico",
         "causa raiz",
@@ -1317,7 +1317,7 @@ export const mockData = {
       ],
       "origin": "Criada por Albert Humphrey na Stanford University nos anos 1960-70, como ferramenta de análise estratégica para empresas.",
       "concept": "Analisa Forças, Fraquezas, Oportunidades e Ameaças para transformar diagnóstico em estratégias e ações concretas.",
-      "how_to_apply": "1. Liste os 4 quadrantes com dados reais (não opiniões soltas).\n2. Cruze os quadrantes (força x oportunidade, fraqueza x ameaça etc.).\n3. Transforme os cruzamentos em estratégias e ações concretas.",
+      "how_to_apply": "1. Liste os 4 quadrantes com dados e evidências observáveis (não opiniões soltas).\n2. Cruze os quadrantes (força x oportunidade, fraqueza x ameaça etc.).\n3. Transforme os cruzamentos em estratégias e ações concretas.",
       "when_to_use": "Quando preciso avaliar forças, fraquezas, oportunidades e ameaças antes de uma decisão estratégica.",
       "contexts": [
         "projetos",
@@ -1349,7 +1349,7 @@ export const mockData = {
       ],
       "origin": "Ferramenta formalizada por Mike Rother e John Shook no livro 'Learning to See' (1999), baseada nas práticas do Sistema Toyota de Produção.",
       "concept": "Desenha o fluxo ponta a ponta de um processo, incluindo tempos de valor e de não valor, para revelar desperdícios.",
-      "how_to_apply": "1. Desenhe o fluxo atual com dados reais.\n2. Calcule o lead time e o tempo de valor agregado.\n3. Identifique desperdícios.\n4. Desenhe o estado futuro.\n5. Elabore o plano de ação.",
+      "how_to_apply": "1. Desenhe o fluxo atual com base nas etapas observadas no processo.\n2. Calcule o lead time e o tempo de valor agregado.\n3. Identifique desperdícios.\n4. Desenhe o estado futuro.\n5. Elabore o plano de ação.",
       "when_to_use": "Quando preciso enxergar o fluxo completo de valor de ponta a ponta, não só um trecho.",
       "contexts": [
         "indústria",
@@ -1485,7 +1485,7 @@ export const mockData = {
       ],
       "title": "PDCA",
       "category": "Metodologia",
-      "where_i_used": "Aplicado no ciclo de avaliação mensal: Plan — definir critérios e pesos; Do — avaliar mínimo 5 atendimentos por analista; Check — indicadores QA e IEPC por ciclo; Act — PDI e ajustes de critérios.",
+      "where_i_used": "Aplicação no ciclo de avaliação da qualidade: Plan — definição de critérios e pesos; Do — avaliação amostral estruturada; Check — indicadores QA e IEPC por ciclo; Act — planos de desenvolvimento (PDI) e melhoria contínua.",
       "tags": [
         "melhoria contínua",
         "ciclo",
@@ -1620,7 +1620,7 @@ export const mockData = {
       ],
       "title": "Indicadores de Qualidade",
       "category": "Indicador",
-      "where_i_used": "Construção do sistema QA/IEPC com pesos formais e consolidação por ciclo.",
+      "where_i_used": "Construção de painéis de indicadores combinando qualidade técnica (QA) e percepção do cliente (IEPC).",
       "tags": [
         "métricas",
         "desempenho",
@@ -1653,7 +1653,7 @@ export const mockData = {
       ],
       "title": "Auditoria da Qualidade",
       "category": "Processo",
-      "where_i_used": "Auditoria interna da qualidade com dupla avaliação e calibragem.",
+      "where_i_used": "Aplicação em auditoria interna de processos e sessões de calibragem avaliativa entre pares.",
       "tags": [
         "conformidade",
         "verificação",
@@ -1686,7 +1686,7 @@ export const mockData = {
       ],
       "title": "Não Conformidades",
       "category": "Processo",
-      "where_i_used": "Procedimento PR-NC-001 com 5 categorias e fluxo identificar → tratar → prevenir.",
+      "where_i_used": "Procedimento de gestão de desvios operacionais com categorias estruturadas e fluxo identificar → tratar → prevenir.",
       "tags": [
         "desvio",
         "ação corretiva",

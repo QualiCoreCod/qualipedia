@@ -171,7 +171,7 @@ const FEATURED_THEMES = [
     title: "Diagrama de Ishikawa (6M)",
     type: "Ferramenta",
     summary: "Espinha de peixe estruturada para mapear e categorizar todas as causas potenciais de um problema operacional.",
-    whenToUse: "Quando um defeito ou reclamação recorrente acontece e a causa raiz ainda não foi comprovada.",
+    whenToUse: "Quando um defeito ou reclamação recorrente acontece e a causa raiz precisa ser identificada e analisada.",
     complexity: "Iniciante",
     timeEstimate: "2 a 4 horas",
   },
@@ -577,7 +577,7 @@ export default function Home() {
               to="/enciclopedia"
               className="inline-flex items-center gap-2 text-sm font-bold text-destaque hover:underline shrink-0"
             >
-              <span>Ver todas as 53 fichas</span>
+              <span>Ver todas as {themes.length > 0 ? `${themes.length} fichas` : "fichas"}</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -635,7 +635,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================= */}
-      {/* SEÇÃO F: Métodos Autorais (Bruna Silva) */}
+      {/* SEÇÃO F: Métodos Autorais (Bruna Silva Ramos) */}
       {/* ========================================================= */}
       <section className="w-full bg-slate-900 text-white border-b-2 border-slate-800 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -651,21 +651,25 @@ export default function Home() {
                 </h2>
 
                 <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                  Desenvolvida por <strong>Bruna Silva Ramos Sousa</strong>, esta metodologia consolida um sistema avaliativo estruturado nos 5 pilares da operação, substitui métricas genéricas pelo <strong>Índice IEPC</strong> (Experiência Percebida) e implementa governança contínua de Não Conformidades.
+                  Desenvolvida por <strong>Bruna Silva Ramos</strong> (Goiânia - GO), esta metodologia consolida a governança operacional em quatro eixos complementares: <strong>Qualidade técnica (QA)</strong>, <strong>Experiência percebida pelo cliente (IEPC)</strong>, <strong>Não conformidades</strong> e <strong>Elogios</strong>.
+                </p>
+
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  QA e IEPC produzem avaliações complementares. Não conformidades podem gerar deduções conforme regras metodológicas, enquanto elogios reconhecem comportamentos e entregas positivas.
                 </p>
 
                 <div className="grid sm:grid-cols-3 gap-3 pt-2">
                   <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-blue-400 font-heading">5 Pilares</span>
-                    <span className="text-xs text-slate-400">Fluxo, Tratativa, Técnica, Comunicação, Relação</span>
+                    <span className="block text-xl font-bold text-blue-400 font-heading">QA</span>
+                    <span className="text-xs text-slate-400">QA estruturado em cinco pilares e critérios de avaliação</span>
                   </div>
                   <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-emerald-400 font-heading">+22%</span>
-                    <span className="text-xs text-slate-400">Assertividade Operacional Comprovada</span>
+                    <span className="block text-xl font-bold text-emerald-400 font-heading">4 Eixos</span>
+                    <span className="text-xs text-slate-400">QA, IEPC, Não Conformidades e Elogios</span>
                   </div>
                   <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                    <span className="block text-xl font-bold text-white font-heading">PDCA QA</span>
-                    <span className="text-xs text-slate-400">Ciclo Contínuo de Feedback e Calibragem</span>
+                    <span className="block text-xl font-bold text-white font-heading">Melhoria Contínua</span>
+                    <span className="text-xs text-slate-400">Feedback estruturado, PDI e ações preventivas</span>
                   </div>
                 </div>
               </div>
@@ -683,7 +687,7 @@ export default function Home() {
                   to="/acervo"
                   className="w-full rounded-xl bg-slate-700/80 text-white border border-slate-600 py-3.5 px-6 text-center text-sm font-bold hover:bg-slate-700 transition-colors"
                 >
-                  Consultar Templates no Acervo
+                  Consultar Modelos no Acervo
                 </Link>
               </div>
             </div>
@@ -791,26 +795,26 @@ export default function Home() {
       <section className="w-full bg-slate-100/70 border-b-2 border-slate-200 py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-600 mb-4">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" /> Curadoria e Rigor Técnico
+            <ShieldCheck className="h-4 w-4 text-emerald-600" /> Curadoria e Fundamentação Técnica
           </div>
 
           <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Construída sobre padrões sólidos da gestão da qualidade
+            Pesquisa, referências técnicas e aplicação prática
           </h2>
 
           <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-            A QualiPédia reúne pesquisa, referências normativas internacionais (ISO, ASQ, Lean Institute) e aplicação prática em empresas reais. O projeto foi idealizado e estruturado por <strong>Bruna Silva Ramos Sousa</strong> com o objetivo de oferecer à comunidade um repositório confiável, acessível e sem barreiras comerciais.
+            A QualiPédia reúne pesquisa bibliográfica, literatura consagrada em gestão da qualidade e cenários práticos de implementação. O projeto foi idealizado e estruturado por <strong>Bruna Silva Ramos</strong> (Goiânia - GO) com o objetivo de oferecer à comunidade um repositório confiável, estruturado e acessível para consulta e aplicação no dia a dia.
           </p>
 
           <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-bold text-slate-700">
             <span className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-full px-4 py-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Conteúdo 100% Aberto
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Conhecimento público, organizado e acessível
             </span>
             <span className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-full px-4 py-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Referências Técnicas Validadas
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Fundamentação Metodológica
             </span>
             <span className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-full px-4 py-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Foco em Aplicação Direta
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Cenários Práticos de Aplicação
             </span>
           </div>
         </div>
